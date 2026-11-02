@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Womp Studio — Fish Aquarium, an aquarium life-sim and wave-defense hybrid for Android">
+  <defs>
+    <linearGradient id="ogBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050b1c"/>
+      <stop offset=".55" stop-color="#071a33"/>
+      <stop offset="1" stop-color="#0a2440"/>
+    </linearGradient>
+    <radialGradient id="ogGlow" cx=".72" cy=".28" r=".7">
+      <stop offset="0" stop-color="#3ad6c4" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#3ad6c4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ogCoral" cx=".18" cy=".82" r=".55">
+      <stop offset="0" stop-color="#ff7a5c" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#ff7a5c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  <rect width="1200" height="630" fill="url(#ogGlow)"/>
+  <rect width="1200" height="630" fill="url(#ogCoral)"/>
+
+  <g stroke="none" fill="none" stroke="#6ff2e2" stroke-linecap="round">
+    <path d="M0 520 C 300 470 520 570 860 528 C 1040 504 1120 546 1200 528" stroke-width="2" opacity=".16"/>
+    <path d="M0 566 C 320 526 560 606 880 574 C 1050 558 1130 590 1200 576" stroke-width="2" opacity=".12"/>
+    <path d="M0 606 C 340 578 600 634 900 612 C 1060 600 1140 620 1200 610" stroke-width="2" opacity=".09"/>
+  </g>
+
+  <g fill="none" stroke="#6ff2e2" stroke-width="2" opacity=".45">
+    <circle cx="1064" cy="128" r="10"/>
+    <circle cx="1102" cy="82" r="6"/>
+    <circle cx="1032" cy="184" r="4.5"/>
+  </g>
+
+  <g transform="translate(96 96)">
+    <svg width="88" height="88" viewBox="0 0 40 40">
+      <path d="M4.5 12.5 L11 29 L17.5 18 L24 29 L30.5 12.5" fill="none" stroke="#6ff2e2" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="32.4" cy="16.4" r="1.8" fill="#ff7a5c"/>
+      <circle cx="16.4" cy="7.4" r="2.5" fill="#6ff2e2" opacity=".9"/>
+      <circle cx="22.4" cy="3.6" r="1.3" fill="#6ff2e2" opacity=".55"/>
+    </svg>
+  </g>
+  <text x="196" y="152" font-family="Sora, 'Space Grotesk', Inter, system-ui, sans-serif" font-size="34" font-weight="600" fill="#c8dbe8">Womp Studio</text>
+
+  <text x="96" y="330" font-family="Sora, 'Space Grotesk', Inter, system-ui, sans-serif" font-size="96" font-weight="700" fill="#f2f8fc" letter-spacing="-3">Fish Aquarium</text>
+
+  <text x="96" y="404" font-family="Inter, system-ui, sans-serif" font-size="36" fill="#a8c0d2">Aquarium life-sim &#183; wave defense &#183; idle tycoon</text>
+
+  <rect x="96" y="452" width="470" height="64" rx="32" fill="none" stroke="#ff7a5c" stroke-width="2" opacity=".75"/>
+  <circle cx="132" cy="484" r="6" fill="#ff7a5c"/>
+  <text x="156" y="493" font-family="Inter, system-ui, sans-serif" font-size="26" fill="#ffb7a2">In active development - Android build in testing.</text>
+
+  <text x="96" y="574" font-family="Inter, system-ui, sans-serif" font-size="26" fill="#8aa2b6">Indie game studio &#183; Based in Lebanon &#183; Building for the world</text>
+</svg>

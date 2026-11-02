@@ -1,0 +1,128 @@
+[
+ {
+  "id": "zebra_pleco",
+  "name": "Zebra Pleco",
+  "file": "img/fish-zebra_pleco.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 16,
+  "speed": 52
+ },
+ {
+  "id": "gangsta_guppy",
+  "name": "Gangsta Guppy",
+  "file": "img/fish-gangsta_guppy.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 9,
+  "speed": 95
+ },
+ {
+  "id": "cowboy_carp",
+  "name": "Cowboy Carp",
+  "file": "img/fish-cowboy_carp.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 16,
+  "speed": 70
+ },
+ {
+  "id": "boxer_bass",
+  "name": "Boxer Bass",
+  "file": "img/fish-boxer_bass.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 16,
+  "speed": 74
+ },
+ {
+  "id": "jelly_jester",
+  "name": "Jelly Jester",
+  "file": "img/fish-jelly_jester.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 15,
+  "speed": 45
+ },
+ {
+  "id": "chef_chomp",
+  "name": "Chef Chomp",
+  "file": "img/fish-chef_chomp.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 15,
+  "speed": 72
+ },
+ {
+  "id": "grandma_gourami",
+  "name": "Grandma Gourami",
+  "file": "img/fish-grandma_gourami.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 17,
+  "speed": 45
+ },
+ {
+  "id": "disco_dory",
+  "name": "Disco Dory",
+  "file": "img/fish-disco_dory.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 14,
+  "speed": 80
+ },
+ {
+  "id": "fancy_goldfish",
+  "name": "Fancy Goldfish",
+  "file": "img/fish-fancy_goldfish.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 14,
+  "speed": 68
+ },
+ {
+  "id": "dolphin_detective",
+  "name": "Dolphin Detective",
+  "file": "img/fish-dolphin_detective.webp",
+  "frames": 6,
+  "fps": 4,
+  "radius": 21,
+  "speed": 78
+ },
+ {
+  "id": "guardian_grouper",
+  "name": "Guardian Grouper",
+  "file": "img/fish-guardian_grouper.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 24,
+  "speed": 36
+ },
+ {
+  "id": "ninja_nemo",
+  "name": "Ninja Nemo",
+  "file": "img/fish-ninja_nemo.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 12,
+  "speed": 85
+ },
+ {
+  "id": "rambo_reef",
+  "name": "Rambo Reef",
+  "file": "img/fish-rambo_reef.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 14,
+  "speed": 80
+ },
+ {
+  "id": "ammonite_ancient",
+  "name": "Ammonite Ancient",
+  "file": "img/fish-ammonite_ancient.webp",
+  "frames": 3,
+  "fps": 4,
+  "radius": 14,
+  "speed": 39
+ }
+]

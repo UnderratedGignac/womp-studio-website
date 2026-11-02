@@ -1,0 +1,13 @@
+{
+  "name": "womp-studio-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scroll-controlled Womp Studio underwater expedition",
+  "scripts": {
+    "start": "python -m http.server 4173",
+    "test": "node --test expedition/verify.cjs expedition/combat.test.mjs expedition/scroll-driver.test.mjs expedition/choreography.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

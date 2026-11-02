@@ -1,0 +1,15 @@
+{
+  "name": "Womp Studio",
+  "short_name": "Womp",
+  "description": "Independent game studio building Fish Aquarium for Android.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#03101c",
+  "theme_color": "#03101c",
+  "icons": [
+    { "src": "favicon.png", "sizes": "64x64", "type": "image/png", "purpose": "any" },
+    { "src": "favicon.ico", "sizes": "48x48", "type": "image/x-icon", "purpose": "any" }
+  ]
+}

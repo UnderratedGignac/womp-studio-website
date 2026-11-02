@@ -1,0 +1,526 @@
+{
+  "hero": "./assets/hero.png",
+  "weapons": [
+    "./assets/pistol.png",
+    "./assets/shotgun.png",
+    "./assets/minigun.png",
+    "./assets/railgun.png",
+    "./assets/launcher.png"
+  ],
+  "enemy": "./assets/enemy.png",
+  "boss": "./assets/boss.png",
+  "worlds": [
+    "./assets/surface.webp",
+    "./assets/coral.webp",
+    "./assets/wreck.webp",
+    "./assets/crystal.webp",
+    "./assets/volcanic.webp",
+    "./assets/abyss.webp"
+  ],
+  "wreckOverlay": "./assets/wreck-overlay.webp",
+  "heroGrip": {
+    "x": 0.706,
+    "y": 0.828
+  },
+  "facing": {
+    "hero": 1,
+    "enemy": 1,
+    "boss": 1
+  },
+  "heroSwim": {
+    "path": "./assets/hero-swim.webp",
+    "frames": 4,
+    "frameWidth": 556,
+    "frameHeight": 384
+  },
+  "heroIdle": {
+    "path": "./assets/hero-idle.webp",
+    "frames": 3,
+    "frameWidth": 666,
+    "frameHeight": 384
+  },
+  "enemies": [
+    "./assets/enemy.png",
+    "./assets/barracuda.png",
+    "./assets/jellyfish.png",
+    "./assets/skull_shark.png",
+    "./assets/anglerfish.png"
+  ],
+  "encounters": [
+    {
+      "skin": "cleaner",
+      "enemies": [
+        {
+          "id": "piranha",
+          "name": "Piranha",
+          "path": "./assets/piranha-sheet.webp",
+          "frames": 4,
+          "frameWidth": 313,
+          "frameHeight": 234,
+          "facing": 1
+        },
+        {
+          "id": "barracuda",
+          "name": "Barracuda",
+          "path": "./assets/barracuda-sheet.webp",
+          "frames": 4,
+          "frameWidth": 462,
+          "frameHeight": 200,
+          "facing": 1
+        }
+      ],
+      "boss": {
+        "id": "boss_coralgolem",
+        "name": "Coralgolem",
+        "path": "./assets/boss_coralgolem-sheet.webp",
+        "frames": 4,
+        "frameWidth": 617,
+        "frameHeight": 520,
+        "facing": 1
+      },
+      "recommendedBossWidth": 0.37,
+      "companions": [],
+      "portrait": "./assets/fighter-0.png"
+    },
+    {
+      "skin": "blue_phantom_pleco",
+      "enemies": [
+        {
+          "id": "jellyfish",
+          "name": "Jellyfish",
+          "path": "./assets/jellyfish-sheet.webp",
+          "frames": 4,
+          "frameWidth": 466,
+          "frameHeight": 246,
+          "facing": 1
+        },
+        {
+          "id": "barracuda",
+          "name": "Barracuda",
+          "path": "./assets/barracuda-sheet.webp",
+          "frames": 4,
+          "frameWidth": 462,
+          "frameHeight": 200,
+          "facing": 1
+        },
+        {
+          "id": "eel",
+          "name": "Eel",
+          "path": "./assets/eel-sheet.webp",
+          "frames": 4,
+          "frameWidth": 484,
+          "frameHeight": 197,
+          "facing": 1
+        }
+      ],
+      "boss": {
+        "id": "boss_coralgolem",
+        "name": "Coralgolem",
+        "path": "./assets/boss_coralgolem-sheet.webp",
+        "frames": 4,
+        "frameWidth": 617,
+        "frameHeight": 520,
+        "facing": 1
+      },
+      "recommendedBossWidth": 0.37,
+      "companions": [],
+      "portrait": "./assets/fighter-1.png"
+    },
+    {
+      "skin": "lava_pleco",
+      "enemies": [
+        {
+          "id": "ghost_crab",
+          "name": "Ghost Crab",
+          "path": "./assets/ghost_crab-sheet.webp",
+          "frames": 4,
+          "frameWidth": 1013,
+          "frameHeight": 420,
+          "facing": 1
+        },
+        {
+          "id": "phantom_pike",
+          "name": "Phantom Pike",
+          "path": "./assets/phantom_pike-sheet.webp",
+          "frames": 4,
+          "frameWidth": 579.25,
+          "frameHeight": 420,
+          "facing": 1
+        },
+        {
+          "id": "skull_shark",
+          "name": "Skull Shark",
+          "path": "./assets/skull_shark-sheet.webp",
+          "frames": 4,
+          "frameWidth": 649.75,
+          "frameHeight": 420,
+          "facing": 1
+        }
+      ],
+      "boss": {
+        "id": "boss_phantom",
+        "name": "Phantom",
+        "path": "./assets/boss_phantom-sheet.webp",
+        "frames": 4,
+        "frameWidth": 453,
+        "frameHeight": 203,
+        "facing": 1
+      },
+      "recommendedBossWidth": 0.37,
+      "companions": [],
+      "portrait": "./assets/fighter-2.png"
+    },
+    {
+      "skin": "golden_pleco",
+      "enemies": [
+        {
+          "id": "eel",
+          "name": "Eel",
+          "path": "./assets/eel-sheet.webp",
+          "frames": 4,
+          "frameWidth": 484,
+          "frameHeight": 197,
+          "facing": 1
+        },
+        {
+          "id": "jellyfish",
+          "name": "Jellyfish",
+          "path": "./assets/jellyfish-sheet.webp",
+          "frames": 4,
+          "frameWidth": 466,
+          "frameHeight": 246,
+          "facing": 1
+        },
+        {
+          "id": "obsidian_scarab",
+          "name": "Obsidian Scarab",
+          "path": "./assets/obsidian_scarab-sheet.webp",
+          "frames": 4,
+          "frameWidth": 608,
+          "frameHeight": 520,
+          "facing": 1
+        }
+      ],
+      "boss": {
+        "id": "boss_glassray",
+        "name": "Glassray",
+        "path": "./assets/boss_glassray-sheet.webp",
+        "frames": 4,
+        "frameWidth": 917,
+        "frameHeight": 520,
+        "facing": 1
+      },
+      "recommendedBossWidth": 0.37,
+      "companions": [
+        {
+          "skin": "neon_pleco",
+          "weapon": "railgun",
+          "armed": true
+        }
+      ],
+      "portrait": "./assets/fighter-3.png"
+    },
+    {
+      "skin": "cosmic_pleco",
+      "enemies": [
+        {
+          "id": "obsidian_scarab",
+          "name": "Obsidian Scarab",
+          "path": "./assets/obsidian_scarab-sheet.webp",
+          "frames": 4,
+          "frameWidth": 608,
+          "frameHeight": 520,
+          "facing": 1
+        },
+        {
+          "id": "skull_shark",
+          "name": "Skull Shark",
+          "path": "./assets/skull_shark-sheet.webp",
+          "frames": 4,
+          "frameWidth": 649.75,
+          "frameHeight": 420,
+          "facing": 1
+        },
+        {
+          "id": "wraith_eel",
+          "name": "Wraith Eel",
+          "path": "./assets/wraith_eel-sheet.webp",
+          "frames": 4,
+          "frameWidth": 495.5,
+          "frameHeight": 420,
+          "facing": 1
+        }
+      ],
+      "boss": {
+        "id": "boss_obsidianfish",
+        "name": "Obsidianfish",
+        "path": "./assets/boss_obsidianfish-sheet.webp",
+        "frames": 4,
+        "frameWidth": 482,
+        "frameHeight": 520,
+        "facing": 1
+      },
+      "recommendedBossWidth": 0.37,
+      "companions": [
+        {
+          "skin": "chrome_pleco",
+          "weapon": null,
+          "armed": false
+        }
+      ],
+      "portrait": "./assets/fighter-4.png"
+    },
+    {
+      "skin": "blue_phantom_pleco",
+      "enemies": [
+        {
+          "id": "wraith_eel",
+          "name": "Wraith Eel",
+          "path": "./assets/wraith_eel-sheet.webp",
+          "frames": 4,
+          "frameWidth": 495.5,
+          "frameHeight": 420,
+          "facing": 1
+        },
+        {
+          "id": "phantom_pike",
+          "name": "Phantom Pike",
+          "path": "./assets/phantom_pike-sheet.webp",
+          "frames": 4,
+          "frameWidth": 579.25,
+          "frameHeight": 420,
+          "facing": 1
+        },
+        {
+          "id": "skull_shark",
+          "name": "Skull Shark",
+          "path": "./assets/skull_shark-sheet.webp",
+          "frames": 4,
+          "frameWidth": 649.75,
+          "frameHeight": 420,
+          "facing": 1
+        }
+      ],
+      "boss": {
+        "id": "boss_abyssal",
+        "name": "Abyssal",
+        "path": "./assets/boss_abyssal-sheet.webp",
+        "frames": 4,
+        "frameWidth": 466,
+        "frameHeight": 222,
+        "facing": 1
+      },
+      "recommendedBossWidth": 0.37,
+      "companions": [
+        {
+          "skin": "neon_pleco",
+          "weapon": "railgun",
+          "armed": true
+        }
+      ],
+      "portrait": "./assets/fighter-5.png"
+    }
+  ],
+  "ambientFish": [
+    {
+      "id": "astro_angelfish",
+      "name": "astro angelfish",
+      "path": "./assets/astro_angelfish-swim.webp",
+      "frames": 4,
+      "frameWidth": 184,
+      "frameHeight": 133,
+      "fps": 8,
+      "facing": 1
+    },
+    {
+      "id": "disco_dory",
+      "name": "disco dory",
+      "path": "./assets/disco_dory-swim.webp",
+      "frames": 5,
+      "frameWidth": 178,
+      "frameHeight": 130,
+      "fps": 8,
+      "facing": 1
+    },
+    {
+      "id": "frostfin_angelfish",
+      "name": "frostfin angelfish",
+      "path": "./assets/frostfin_angelfish-swim.webp",
+      "frames": 4,
+      "frameWidth": 351,
+      "frameHeight": 270,
+      "fps": 8,
+      "facing": 1
+    }
+  ],
+  "weaponLoadouts": [
+    {
+      "id": "snapperpistol",
+      "name": "Snapper Pistol",
+      "class": "pistol",
+      "path": "./assets/snapperpistol.png",
+      "muzzleX": 508,
+      "muzzleY": 73,
+      "anchorX": 72.33,
+      "anchorY": 170.05,
+      "width": 512,
+      "height": 274,
+      "anchorU": 0.14126953125,
+      "anchorV": 0.6206204379562045
+    },
+    {
+      "id": "krakenshotgun",
+      "name": "Kraken Shotgun",
+      "class": "shotgun",
+      "path": "./assets/krakenshotgun.png",
+      "muzzleX": 508,
+      "muzzleY": 74,
+      "anchorX": 105.75,
+      "anchorY": 116.06,
+      "width": 512,
+      "height": 199,
+      "anchorU": 0.20654296875,
+      "anchorV": 0.58321608040201
+    },
+    {
+      "id": "reefminigun",
+      "name": "Reef Minigun",
+      "class": "smg",
+      "path": "./assets/reefminigun.png",
+      "muzzleX": 505,
+      "muzzleY": 92,
+      "anchorX": 110.08,
+      "anchorY": 110.7,
+      "width": 512,
+      "height": 205,
+      "anchorU": 0.215,
+      "anchorV": 0.54
+    },
+    {
+      "id": "narwhalrail",
+      "name": "Narwhal Rail",
+      "class": "sniper",
+      "path": "./assets/narwhalrail.png",
+      "muzzleX": 508,
+      "muzzleY": 53,
+      "anchorX": 119.77,
+      "anchorY": 87.63,
+      "width": 512,
+      "height": 139,
+      "anchorU": 0.23392578125,
+      "anchorV": 0.630431654676259
+    },
+    {
+      "id": "clamcannon",
+      "name": "Clam Cannon",
+      "class": "cannon",
+      "path": "./assets/clamcannon.png",
+      "muzzleX": 503,
+      "muzzleY": 68,
+      "anchorX": 71.68,
+      "anchorY": 148.74,
+      "width": 512,
+      "height": 222,
+      "anchorU": 0.14,
+      "anchorV": 0.67
+    }
+  ],
+  "introCard": "./assets/intro-card.png",
+  "meleeAnimations": {
+    "cleaner": {
+      "bite": {
+        "path": "./assets/cleaner-bite.webp",
+        "frames": 6,
+        "frameWidth": 657,
+        "frameHeight": 375,
+        "fps": 27,
+        "holds": [
+          1,
+          1,
+          2,
+          2,
+          1,
+          1
+        ],
+        "unitScale": 1.1
+      },
+      "punch": {
+        "path": "./assets/cleaner-punch.webp",
+        "frames": 5,
+        "frameWidth": 623,
+        "frameHeight": 352,
+        "fps": 27,
+        "holds": [
+          1,
+          1,
+          3,
+          2,
+          1
+        ],
+        "unitScale": 1.17
+      }
+    },
+    "cow_pleco": {
+      "bite": {
+        "path": "./assets/cow_pleco-bite.webp",
+        "frames": 6,
+        "frameWidth": 601,
+        "frameHeight": 371,
+        "fps": 27,
+        "holds": [
+          1,
+          1,
+          2,
+          2,
+          1,
+          1
+        ],
+        "unitScale": 1.09
+      },
+      "punch": {
+        "path": "./assets/cow_pleco-punch.webp",
+        "frames": 3,
+        "frameWidth": 631,
+        "frameHeight": 384,
+        "fps": 12,
+        "holds": [
+          1,
+          1,
+          1
+        ],
+        "unitScale": 1.07
+      }
+    },
+    "golden_pleco": {
+      "bite": {
+        "path": "./assets/golden_pleco-bite.webp",
+        "frames": 6,
+        "frameWidth": 624,
+        "frameHeight": 371,
+        "fps": 27,
+        "holds": [
+          1,
+          1,
+          2,
+          2,
+          1,
+          1
+        ],
+        "unitScale": 1.12
+      },
+      "punch": {
+        "path": "./assets/golden_pleco-punch.webp",
+        "frames": 3,
+        "frameWidth": 635,
+        "frameHeight": 384,
+        "fps": 12,
+        "holds": [
+          1,
+          1,
+          1
+        ],
+        "unitScale": 1.04
+      }
+    }
+  }
+}

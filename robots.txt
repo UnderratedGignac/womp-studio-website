@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://womp-studio.vercel.app/sitemap.xml

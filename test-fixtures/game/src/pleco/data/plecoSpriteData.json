@@ -1,0 +1,3404 @@
+{
+  "sprites": {
+    "pet_cleaner_swim": {
+      "path": "pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_cleaner_idle": {
+      "path": "pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_cleaner_eat": {
+      "path": "pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_zebra_pleco_swim": {
+      "path": "pets/zebra_pleco/swim.rampage.webp",
+      "facing": 1
+    },
+    "pet_zebra_pleco_idle": {
+      "path": "pets/zebra_pleco/idle.rampage.webp",
+      "facing": 1
+    },
+    "pet_zebra_pleco_eat": {
+      "path": "pets/zebra_pleco/eat.rampage.webp",
+      "facing": 1
+    },
+    "pet_cow_pleco_swim": {
+      "path": "pets/cow_pleco/swim.rampage.webp",
+      "facing": 1
+    },
+    "pet_cow_pleco_idle": {
+      "path": "pets/cow_pleco/idle.rampage.webp",
+      "facing": 1
+    },
+    "pet_cow_pleco_eat": {
+      "path": "pets/cow_pleco/eat.rampage.webp",
+      "facing": 1
+    },
+    "pet_golden_pleco_swim": {
+      "path": "pets/golden_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_golden_pleco_idle": {
+      "path": "pets/golden_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_golden_pleco_eat": {
+      "path": "pets/golden_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_royal_pleco_swim": {
+      "path": "pets/royal_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_royal_pleco_idle": {
+      "path": "pets/royal_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_royal_pleco_eat": {
+      "path": "pets/royal_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_ghost_pleco_swim": {
+      "path": "pets/ghost_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_ghost_pleco_idle": {
+      "path": "pets/ghost_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_ghost_pleco_eat": {
+      "path": "pets/ghost_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_tiger_pleco_swim": {
+      "path": "pets/tiger_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_tiger_pleco_idle": {
+      "path": "pets/tiger_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_tiger_pleco_eat": {
+      "path": "pets/tiger_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_blue_phantom_pleco_swim": {
+      "path": "pets/blue_phantom_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_blue_phantom_pleco_idle": {
+      "path": "pets/blue_phantom_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_blue_phantom_pleco_eat": {
+      "path": "pets/blue_phantom_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_lava_pleco_swim": {
+      "path": "pets/lava_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_lava_pleco_idle": {
+      "path": "pets/lava_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_lava_pleco_eat": {
+      "path": "pets/lava_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_dragon_pleco_swim": {
+      "path": "pets/dragon_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_dragon_pleco_idle": {
+      "path": "pets/dragon_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_dragon_pleco_eat": {
+      "path": "pets/dragon_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_cosmic_pleco_swim": {
+      "path": "pets/cosmic_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_cosmic_pleco_idle": {
+      "path": "pets/cosmic_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_cosmic_pleco_eat": {
+      "path": "pets/cosmic_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_diamond_pleco_swim": {
+      "path": "pets/diamond_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_diamond_pleco_idle": {
+      "path": "pets/diamond_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_diamond_pleco_eat": {
+      "path": "pets/diamond_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_phoenix_pleco_swim": {
+      "path": "pets/phoenix_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_phoenix_pleco_idle": {
+      "path": "pets/phoenix_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_phoenix_pleco_eat": {
+      "path": "pets/phoenix_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_void_pleco_swim": {
+      "path": "pets/void_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_void_pleco_idle": {
+      "path": "pets/void_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_void_pleco_eat": {
+      "path": "pets/void_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_knight_pleco_swim": {
+      "path": "pets/knight_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_knight_pleco_idle": {
+      "path": "pets/knight_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_knight_pleco_eat": {
+      "path": "pets/knight_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_samurai_pleco_swim": {
+      "path": "pets/samurai_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_samurai_pleco_idle": {
+      "path": "pets/samurai_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_samurai_pleco_eat": {
+      "path": "pets/samurai_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_viking_pleco_swim": {
+      "path": "pets/viking_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_viking_pleco_idle": {
+      "path": "pets/viking_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_viking_pleco_eat": {
+      "path": "pets/viking_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_mecha_pleco_swim": {
+      "path": "pets/mecha_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_mecha_pleco_idle": {
+      "path": "pets/mecha_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_mecha_pleco_eat": {
+      "path": "pets/mecha_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_bounty_pleco_swim": {
+      "path": "pets/bounty_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_bounty_pleco_idle": {
+      "path": "pets/bounty_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_bounty_pleco_eat": {
+      "path": "pets/bounty_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_apex_pleco_swim": {
+      "path": "pets/apex_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_apex_pleco_idle": {
+      "path": "pets/apex_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_apex_pleco_eat": {
+      "path": "pets/apex_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_cleaner_punch": {
+      "path": "pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_cow_pleco_punch": {
+      "path": "pets/cow_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_golden_pleco_punch": {
+      "path": "pets/golden_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_ghost_pleco_punch": {
+      "path": "pets/ghost_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_royal_pleco_punch": {
+      "path": "pets/royal_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_tiger_pleco_punch": {
+      "path": "pets/tiger_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_blue_phantom_pleco_punch": {
+      "path": "pets/blue_phantom_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_dragon_pleco_punch": {
+      "path": "pets/dragon_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_cosmic_pleco_punch": {
+      "path": "pets/cosmic_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_diamond_pleco_punch": {
+      "path": "pets/diamond_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_phoenix_pleco_punch": {
+      "path": "pets/phoenix_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_void_pleco_punch": {
+      "path": "pets/void_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_bounty_pleco_punch": {
+      "path": "pets/bounty_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_apex_pleco_punch": {
+      "path": "pets/apex_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_knight_pleco_punch": {
+      "path": "pets/knight_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_samurai_pleco_punch": {
+      "path": "pets/samurai_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_viking_pleco_punch": {
+      "path": "pets/viking_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_mecha_pleco_punch": {
+      "path": "pets/mecha_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_lava_pleco_punch": {
+      "path": "pets/lava_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_glacier_pleco_swim": {
+      "path": "pets/glacier_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_glacier_pleco_idle": {
+      "path": "pets/glacier_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_glacier_pleco_eat": {
+      "path": "pets/glacier_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_storm_pleco_swim": {
+      "path": "pets/storm_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_storm_pleco_idle": {
+      "path": "pets/storm_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_storm_pleco_eat": {
+      "path": "pets/storm_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_jade_pleco_swim": {
+      "path": "pets/jade_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_jade_pleco_idle": {
+      "path": "pets/jade_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_jade_pleco_eat": {
+      "path": "pets/jade_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_rust_pleco_swim": {
+      "path": "pets/rust_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_rust_pleco_idle": {
+      "path": "pets/rust_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_rust_pleco_eat": {
+      "path": "pets/rust_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_neon_pleco_swim": {
+      "path": "pets/neon_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_neon_pleco_idle": {
+      "path": "pets/neon_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_neon_pleco_eat": {
+      "path": "pets/neon_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_bone_pleco_swim": {
+      "path": "pets/bone_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_bone_pleco_idle": {
+      "path": "pets/bone_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_bone_pleco_eat": {
+      "path": "pets/bone_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_plague_pleco_swim": {
+      "path": "pets/plague_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_plague_pleco_idle": {
+      "path": "pets/plague_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_plague_pleco_eat": {
+      "path": "pets/plague_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_solar_pleco_swim": {
+      "path": "pets/solar_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_solar_pleco_idle": {
+      "path": "pets/solar_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_solar_pleco_eat": {
+      "path": "pets/solar_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_abyss_pleco_swim": {
+      "path": "pets/abyss_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_abyss_pleco_idle": {
+      "path": "pets/abyss_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_abyss_pleco_eat": {
+      "path": "pets/abyss_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_prism_pleco_swim": {
+      "path": "pets/prism_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_prism_pleco_idle": {
+      "path": "pets/prism_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_prism_pleco_eat": {
+      "path": "pets/prism_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_titan_pleco_swim": {
+      "path": "pets/titan_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_titan_pleco_idle": {
+      "path": "pets/titan_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_titan_pleco_eat": {
+      "path": "pets/titan_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_venom_pleco_swim": {
+      "path": "pets/venom_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_venom_pleco_idle": {
+      "path": "pets/venom_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_venom_pleco_eat": {
+      "path": "pets/venom_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_chrome_pleco_swim": {
+      "path": "pets/chrome_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_chrome_pleco_idle": {
+      "path": "pets/chrome_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_chrome_pleco_eat": {
+      "path": "pets/chrome_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_toxic_pleco_swim": {
+      "path": "pets/toxic_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_toxic_pleco_idle": {
+      "path": "pets/toxic_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_toxic_pleco_eat": {
+      "path": "pets/toxic_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_coral_pleco_swim": {
+      "path": "pets/coral_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_coral_pleco_idle": {
+      "path": "pets/coral_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_coral_pleco_eat": {
+      "path": "pets/coral_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_dragon_pleco_fireBreath": {
+      "path": "pets/dragon_pleco/fireBreath.webp",
+      "facing": 1
+    },
+    "pet_abyss_pleco_anglerlight": {
+      "path": "pets/abyss_pleco/anglerlight.webp",
+      "facing": 1
+    },
+    "pet_cow_pleco_bullRush": {
+      "path": "pets/cow_pleco/bullRush.webp",
+      "facing": 1
+    },
+    "pet_bounty_pleco_contract": {
+      "path": "pets/bounty_pleco/contract.webp",
+      "facing": 1
+    },
+    "pet_golden_pleco_goldRush": {
+      "path": "pets/golden_pleco/goldRush.webp",
+      "facing": 1
+    },
+    "pet_blue_phantom_pleco_phantomWake": {
+      "path": "pets/blue_phantom_pleco/phantomWake.webp",
+      "facing": 1
+    },
+    "pet_void_pleco_entropyRift": {
+      "path": "pets/void_pleco/entropyRift.webp",
+      "facing": 1
+    },
+    "pet_lava_pleco_eruption": {
+      "path": "pets/lava_pleco/eruption.webp",
+      "facing": 1
+    },
+    "pet_glacier_pleco_flashFreeze": {
+      "path": "pets/glacier_pleco/flashFreeze.webp",
+      "facing": 1
+    },
+    "pet_plague_pleco_contagionBurst": {
+      "path": "pets/plague_pleco/contagionBurst.webp",
+      "facing": 1
+    },
+    "pet_zebra_pleco_dazzleFlash": {
+      "path": "pets/zebra_pleco/dazzleFlash.webp",
+      "facing": 1
+    },
+    "pet_diamond_pleco_prismFlare": {
+      "path": "pets/diamond_pleco/prismFlare.webp",
+      "facing": 1
+    },
+    "pet_apex_pleco_terror": {
+      "path": "pets/apex_pleco/terror.webp",
+      "facing": 1
+    },
+    "pet_storm_pleco_thunderclap": {
+      "path": "pets/storm_pleco/thunderclap.webp",
+      "facing": 1
+    },
+    "pet_jade_pleco_jadeWard": {
+      "path": "pets/jade_pleco/jadeWard.webp",
+      "facing": 1
+    },
+    "pet_chrome_pleco_mirrorSheen": {
+      "path": "pets/chrome_pleco/mirrorSheen.webp",
+      "facing": 1
+    },
+    "pet_phoenix_pleco_rebirth": {
+      "path": "pets/phoenix_pleco/rebirth.webp",
+      "facing": 1
+    },
+    "pet_prism_pleco_refraction": {
+      "path": "pets/prism_pleco/refraction.webp",
+      "facing": 1
+    },
+    "pet_titan_pleco_stoneskin": {
+      "path": "pets/titan_pleco/stoneskin.webp",
+      "facing": 1
+    },
+    "pet_ghost_pleco_phaseShroud": {
+      "path": "pets/ghost_pleco/phaseShroud.webp",
+      "facing": 1
+    },
+    "pet_tiger_pleco_predatorsLunge": {
+      "path": "pets/tiger_pleco/predatorsLunge.webp",
+      "facing": 1
+    },
+    "pet_venom_pleco_venomFangs": {
+      "path": "pets/venom_pleco/venomFangs.webp",
+      "facing": 1
+    },
+    "pet_bone_pleco_boneStorm": {
+      "path": "pets/bone_pleco/boneStorm.webp",
+      "facing": 1
+    },
+    "pet_cosmic_pleco_gravityWell": {
+      "path": "pets/cosmic_pleco/gravityWell.webp",
+      "facing": 1
+    },
+    "pet_neon_pleco_lurePulse": {
+      "path": "pets/neon_pleco/lurePulse.webp",
+      "facing": 1
+    },
+    "pet_coral_pleco_polypBloom": {
+      "path": "pets/coral_pleco/polypBloom.webp",
+      "facing": 1
+    },
+    "pet_solar_pleco_solarFlare": {
+      "path": "pets/solar_pleco/solarFlare.webp",
+      "facing": 1
+    },
+    "pet_toxic_pleco_acidSpit": {
+      "path": "pets/toxic_pleco/acidSpit.webp",
+      "facing": 1
+    },
+    "pet_royal_pleco_royalDecree": {
+      "path": "pets/royal_pleco/royalDecree.webp",
+      "facing": 1
+    },
+    "pet_rust_pleco_scrapshell": {
+      "path": "pets/rust_pleco/scrapshell.webp",
+      "facing": 1
+    },
+    "pet_glacier_pleco_bite": {
+      "path": "pets/glacier_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_tiger_pleco_bite": {
+      "path": "pets/tiger_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_blue_phantom_pleco_bite": {
+      "path": "pets/blue_phantom_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_bone_pleco_bite": {
+      "path": "pets/bone_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_bounty_pleco_bite": {
+      "path": "pets/bounty_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_chrome_pleco_bite": {
+      "path": "pets/chrome_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_cosmic_pleco_bite": {
+      "path": "pets/cosmic_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_cow_pleco_bite": {
+      "path": "pets/cow_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_jade_pleco_bite": {
+      "path": "pets/jade_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_lava_pleco_bite": {
+      "path": "pets/lava_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_neon_pleco_bite": {
+      "path": "pets/neon_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_plague_pleco_bite": {
+      "path": "pets/plague_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_royal_pleco_bite": {
+      "path": "pets/royal_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_rust_pleco_bite": {
+      "path": "pets/rust_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_solar_pleco_bite": {
+      "path": "pets/solar_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_storm_pleco_bite": {
+      "path": "pets/storm_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_titan_pleco_bite": {
+      "path": "pets/titan_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_toxic_pleco_bite": {
+      "path": "pets/toxic_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_venom_pleco_bite": {
+      "path": "pets/venom_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_void_pleco_bite": {
+      "path": "pets/void_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_zebra_pleco_bite": {
+      "path": "pets/zebra_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_dragon_pleco_bite": {
+      "path": "pets/dragon_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_phoenix_pleco_bite": {
+      "path": "pets/phoenix_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_abyss_pleco_bite": {
+      "path": "pets/abyss_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_apex_pleco_bite": {
+      "path": "pets/apex_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_coral_pleco_bite": {
+      "path": "pets/coral_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_diamond_pleco_bite": {
+      "path": "pets/diamond_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_ghost_pleco_bite": {
+      "path": "pets/ghost_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_prism_pleco_bite": {
+      "path": "pets/prism_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_golden_pleco_bite": {
+      "path": "pets/golden_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_cleaner_bite": {
+      "path": "pets/cleaner/bite.webp",
+      "facing": 1
+    },
+    "pet_chrome_pleco_barrage": {
+      "path": "pets/chrome_pleco/barrage.webp",
+      "facing": 1
+    },
+    "pet_lava_pleco_emberVolley": {
+      "path": "pets/lava_pleco/emberVolley.webp",
+      "facing": 1
+    },
+    "pet_glacier_pleco_frostLance": {
+      "path": "pets/glacier_pleco/frostLance.webp",
+      "facing": 1
+    },
+    "pet_gang_pleco_swim": {
+      "path": "pets/gang_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_gang_pleco_idle": {
+      "path": "pets/gang_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_gang_pleco_eat": {
+      "path": "pets/gang_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_gang_pleco_bite": {
+      "path": "pets/gang_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_gang_pleco_shoalCall": {
+      "path": "pets/gang_pleco/shoalCall.webp",
+      "facing": 1
+    },
+    "pet_zebra_pleco_punch": {
+      "path": "pets/zebra_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_samurai_pleco_bite": {
+      "path": "pets/samurai_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_viking_pleco_bite": {
+      "path": "pets/viking_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_knight_pleco_bite": {
+      "path": "pets/knight_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_toxic_pleco_punch": {
+      "path": "pets/toxic_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_glacier_pleco_punch": {
+      "path": "pets/glacier_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_coral_pleco_punch": {
+      "path": "pets/coral_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_jade_pleco_punch": {
+      "path": "pets/jade_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_storm_pleco_punch": {
+      "path": "pets/storm_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_spartan_pleco_swim": {
+      "path": "pets/spartan_pleco/swim.webp",
+      "facing": 1
+    },
+    "pet_spartan_pleco_idle": {
+      "path": "pets/spartan_pleco/idle.webp",
+      "facing": 1
+    },
+    "pet_spartan_pleco_eat": {
+      "path": "pets/spartan_pleco/eat.webp",
+      "facing": 1
+    },
+    "pet_spartan_pleco_punch": {
+      "path": "pets/spartan_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_spartan_pleco_bite": {
+      "path": "pets/spartan_pleco/bite.webp",
+      "facing": 1
+    },
+    "pet_spartan_pleco_spartanRage": {
+      "path": "pets/spartan_pleco/spartanRage.webp",
+      "facing": 1
+    },
+    "pleco_card_spartan_pleco": {
+      "path": "pets/spartan_pleco/card.webp",
+      "facing": 1
+    },
+    "pet_neon_pleco_punch": {
+      "path": "pets/neon_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_gang_pleco_punch": {
+      "path": "pets/gang_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_bone_pleco_punch": {
+      "path": "pets/bone_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_solar_pleco_punch": {
+      "path": "pets/solar_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_plague_pleco_punch": {
+      "path": "pets/plague_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_abyss_pleco_punch": {
+      "path": "pets/abyss_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_titan_pleco_punch": {
+      "path": "pets/titan_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_prism_pleco_punch": {
+      "path": "pets/prism_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_rust_pleco_punch": {
+      "path": "pets/rust_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_venom_pleco_punch": {
+      "path": "pets/venom_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_chrome_pleco_punch": {
+      "path": "pets/chrome_pleco/punch.webp",
+      "facing": 1
+    },
+    "pet_mecha_pleco_bite": {
+      "path": "pets/mecha_pleco/bite.webp",
+      "facing": 1
+    }
+  },
+  "layouts": {
+    "pet_cleaner_swim": {
+      "frameW": 556,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_cleaner_idle": {
+      "frameW": 666,
+      "frameH": 384,
+      "count": 3,
+      "fps": 4
+    },
+    "pet_cleaner_eat": {
+      "frameW": 673,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_zebra_pleco_swim": {
+      "frameW": 592,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_zebra_pleco_idle": {
+      "frameW": 663,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_zebra_pleco_eat": {
+      "frameW": 673,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_cow_pleco_swim": {
+      "frameW": 584,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_cow_pleco_idle": {
+      "frameW": 664,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_cow_pleco_eat": {
+      "frameW": 675,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_golden_pleco_swim": {
+      "frameW": 584,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_golden_pleco_idle": {
+      "frameW": 666,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_golden_pleco_eat": {
+      "frameW": 675,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_royal_pleco_swim": {
+      "frameW": 591,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_royal_pleco_idle": {
+      "frameW": 666,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_royal_pleco_eat": {
+      "frameW": 672,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_ghost_pleco_swim": {
+      "frameW": 585,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_ghost_pleco_idle": {
+      "frameW": 660,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_ghost_pleco_eat": {
+      "frameW": 671,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_tiger_pleco_swim": {
+      "frameW": 568,
+      "frameH": 362,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_tiger_pleco_idle": {
+      "frameW": 671,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_tiger_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_blue_phantom_pleco_swim": {
+      "frameW": 554,
+      "frameH": 347,
+      "count": 8,
+      "fps": 16,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_blue_phantom_pleco_idle": {
+      "frameW": 663,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_blue_phantom_pleco_eat": {
+      "frameW": 672,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_lava_pleco_swim": {
+      "frameW": 584,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_lava_pleco_idle": {
+      "frameW": 664,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_lava_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_dragon_pleco_swim": {
+      "frameW": 549,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_dragon_pleco_idle": {
+      "frameW": 557,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_dragon_pleco_eat": {
+      "frameW": 552,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_cosmic_pleco_swim": {
+      "frameW": 601,
+      "frameH": 380,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_cosmic_pleco_idle": {
+      "frameW": 665,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_cosmic_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_diamond_pleco_swim": {
+      "frameW": 589,
+      "frameH": 384,
+      "count": 8,
+      "fps": 16,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_diamond_pleco_idle": {
+      "frameW": 664,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_diamond_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_phoenix_pleco_swim": {
+      "frameW": 589,
+      "frameH": 384,
+      "count": 8,
+      "fps": 16,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_phoenix_pleco_idle": {
+      "frameW": 665,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_phoenix_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_void_pleco_swim": {
+      "frameW": 576,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_void_pleco_idle": {
+      "frameW": 666,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_void_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_knight_pleco_swim": {
+      "frameW": 575,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_knight_pleco_idle": {
+      "frameW": 571,
+      "frameH": 384,
+      "count": 3,
+      "fps": 4
+    },
+    "pet_knight_pleco_eat": {
+      "frameW": 572,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_samurai_pleco_swim": {
+      "frameW": 536,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_samurai_pleco_idle": {
+      "frameW": 557,
+      "frameH": 384,
+      "count": 3,
+      "fps": 4
+    },
+    "pet_samurai_pleco_eat": {
+      "frameW": 556,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_viking_pleco_swim": {
+      "frameW": 541,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_viking_pleco_idle": {
+      "frameW": 575,
+      "frameH": 384,
+      "count": 3,
+      "fps": 4
+    },
+    "pet_viking_pleco_eat": {
+      "frameW": 568,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9,
+      "unitScale": 1.11
+    },
+    "pet_mecha_pleco_swim": {
+      "frameW": 643,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_mecha_pleco_idle": {
+      "frameW": 672,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_mecha_pleco_eat": {
+      "frameW": 668,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_bounty_pleco_swim": {
+      "frameW": 579,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_bounty_pleco_idle": {
+      "frameW": 662,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_bounty_pleco_eat": {
+      "frameW": 669,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_apex_pleco_swim": {
+      "frameW": 589,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_apex_pleco_idle": {
+      "frameW": 666,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_apex_pleco_eat": {
+      "frameW": 669,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_cleaner_punch": {
+      "frameW": 623,
+      "frameH": 352,
+      "count": 5,
+      "fps": 27,
+      "unitScale": 1.17,
+      "holds": [
+        1,
+        1,
+        3,
+        2,
+        1
+      ]
+    },
+    "pet_cow_pleco_punch": {
+      "frameW": 631,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.07
+    },
+    "pet_golden_pleco_punch": {
+      "frameW": 635,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.04
+    },
+    "pet_ghost_pleco_punch": {
+      "frameW": 667,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.1
+    },
+    "pet_royal_pleco_punch": {
+      "frameW": 636,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.06
+    },
+    "pet_tiger_pleco_punch": {
+      "frameW": 549,
+      "frameH": 301,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.11
+    },
+    "pet_blue_phantom_pleco_punch": {
+      "frameW": 567,
+      "frameH": 298,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.12
+    },
+    "pet_dragon_pleco_punch": {
+      "frameW": 514,
+      "frameH": 342,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.12
+    },
+    "pet_cosmic_pleco_punch": {
+      "frameW": 668,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.05
+    },
+    "pet_diamond_pleco_punch": {
+      "frameW": 629,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.14
+    },
+    "pet_phoenix_pleco_punch": {
+      "frameW": 675,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.14
+    },
+    "pet_void_pleco_punch": {
+      "frameW": 682,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.03
+    },
+    "pet_bounty_pleco_punch": {
+      "frameW": 569,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.01
+    },
+    "pet_apex_pleco_punch": {
+      "frameW": 647,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.02
+    },
+    "pet_knight_pleco_punch": {
+      "frameW": 575,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.03
+    },
+    "pet_samurai_pleco_punch": {
+      "frameW": 517,
+      "frameH": 351,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.1
+    },
+    "pet_viking_pleco_punch": {
+      "frameW": 564,
+      "frameH": 339,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.17
+    },
+    "pet_mecha_pleco_punch": {
+      "frameW": 548,
+      "frameH": 304,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.1
+    },
+    "pet_lava_pleco_punch": {
+      "frameW": 599,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.06
+    },
+    "pet_glacier_pleco_swim": {
+      "frameW": 555,
+      "frameH": 353,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_glacier_pleco_idle": {
+      "frameW": 665,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_glacier_pleco_eat": {
+      "frameW": 680,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_storm_pleco_swim": {
+      "frameW": 580,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_storm_pleco_idle": {
+      "frameW": 663,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_storm_pleco_eat": {
+      "frameW": 676,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_jade_pleco_swim": {
+      "frameW": 587,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_jade_pleco_idle": {
+      "frameW": 667,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_jade_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_rust_pleco_swim": {
+      "frameW": 668,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_rust_pleco_idle": {
+      "frameW": 669,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_rust_pleco_eat": {
+      "frameW": 667,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_neon_pleco_swim": {
+      "frameW": 586,
+      "frameH": 384,
+      "count": 8,
+      "fps": 16,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_neon_pleco_idle": {
+      "frameW": 666,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_neon_pleco_eat": {
+      "frameW": 672,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_bone_pleco_swim": {
+      "frameW": 672,
+      "frameH": 326,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_bone_pleco_idle": {
+      "frameW": 732,
+      "frameH": 343,
+      "count": 3,
+      "fps": 4
+    },
+    "pet_bone_pleco_eat": {
+      "frameW": 729,
+      "frameH": 339,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_plague_pleco_swim": {
+      "frameW": 586,
+      "frameH": 384,
+      "count": 8,
+      "fps": 16,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_plague_pleco_idle": {
+      "frameW": 663,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_plague_pleco_eat": {
+      "frameW": 675,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_solar_pleco_swim": {
+      "frameW": 545,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_solar_pleco_idle": {
+      "frameW": 554,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_solar_pleco_eat": {
+      "frameW": 546,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_abyss_pleco_swim": {
+      "frameW": 556,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_abyss_pleco_idle": {
+      "frameW": 562,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_abyss_pleco_eat": {
+      "frameW": 560,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_prism_pleco_swim": {
+      "frameW": 662,
+      "frameH": 381,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_prism_pleco_idle": {
+      "frameW": 714,
+      "frameH": 384,
+      "count": 3,
+      "fps": 4
+    },
+    "pet_prism_pleco_eat": {
+      "frameW": 702,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_titan_pleco_swim": {
+      "frameW": 582,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_titan_pleco_idle": {
+      "frameW": 664,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_titan_pleco_eat": {
+      "frameW": 674,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_venom_pleco_swim": {
+      "frameW": 689,
+      "frameH": 298,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_venom_pleco_idle": {
+      "frameW": 862,
+      "frameH": 317,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_venom_pleco_eat": {
+      "frameW": 859,
+      "frameH": 318,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_chrome_pleco_swim": {
+      "frameW": 665,
+      "frameH": 338,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_chrome_pleco_idle": {
+      "frameW": 763,
+      "frameH": 345,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_chrome_pleco_eat": {
+      "frameW": 768,
+      "frameH": 360,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_toxic_pleco_swim": {
+      "frameW": 584,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_toxic_pleco_idle": {
+      "frameW": 666,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_toxic_pleco_eat": {
+      "frameW": 676,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_coral_pleco_swim": {
+      "frameW": 582,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_coral_pleco_idle": {
+      "frameW": 665,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_coral_pleco_eat": {
+      "frameW": 678,
+      "frameH": 384,
+      "count": 3,
+      "fps": 9
+    },
+    "pet_dragon_pleco_fireBreath": {
+      "frameW": 722,
+      "frameH": 368,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.27,
+      "holds": [
+        1,
+        1,
+        1,
+        23,
+        22,
+        1
+      ]
+    },
+    "pet_abyss_pleco_anglerlight": {
+      "frameW": 505,
+      "frameH": 373,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.11,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_cow_pleco_bullRush": {
+      "frameW": 581,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.07,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_bounty_pleco_contract": {
+      "frameW": 694,
+      "frameH": 368,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.13,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_golden_pleco_goldRush": {
+      "frameW": 465,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.11,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_blue_phantom_pleco_phantomWake": {
+      "frameW": 723,
+      "frameH": 371,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.08,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_void_pleco_entropyRift": {
+      "frameW": 569,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_lava_pleco_eruption": {
+      "frameW": 432,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.19,
+      "holds": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    "pet_glacier_pleco_flashFreeze": {
+      "frameW": 361,
+      "frameH": 272,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.15,
+      "holds": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    "pet_plague_pleco_contagionBurst": {
+      "frameW": 494,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.19,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_zebra_pleco_dazzleFlash": {
+      "frameW": 328,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.18,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_diamond_pleco_prismFlare": {
+      "frameW": 375,
+      "frameH": 244,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.13,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_apex_pleco_terror": {
+      "frameW": 522,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_storm_pleco_thunderclap": {
+      "frameW": 450,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        1,
+        31,
+        30,
+        1
+      ]
+    },
+    "pet_jade_pleco_jadeWard": {
+      "frameW": 497,
+      "frameH": 368,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.18,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_chrome_pleco_mirrorSheen": {
+      "frameW": 533,
+      "frameH": 248,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    "pet_phoenix_pleco_rebirth": {
+      "frameW": 376,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.26,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_prism_pleco_refraction": {
+      "frameW": 455,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.12,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_titan_pleco_stoneskin": {
+      "frameW": 554,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.2,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_ghost_pleco_phaseShroud": {
+      "frameW": 614,
+      "frameH": 367,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.11,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_tiger_pleco_predatorsLunge": {
+      "frameW": 580,
+      "frameH": 366,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_venom_pleco_venomFangs": {
+      "frameW": 733,
+      "frameH": 345,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.15,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_bone_pleco_boneStorm": {
+      "frameW": 445,
+      "frameH": 358,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.15,
+      "holds": [
+        1,
+        1,
+        1,
+        28,
+        27,
+        1
+      ]
+    },
+    "pet_cosmic_pleco_gravityWell": {
+      "frameW": 646,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.07,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_neon_pleco_lurePulse": {
+      "frameW": 379,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.14,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_coral_pleco_polypBloom": {
+      "frameW": 550,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.08,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_solar_pleco_solarFlare": {
+      "frameW": 375,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.16,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_toxic_pleco_acidSpit": {
+      "frameW": 796,
+      "frameH": 367,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.25,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_royal_pleco_royalDecree": {
+      "frameW": 486,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.09,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_rust_pleco_scrapshell": {
+      "frameW": 503,
+      "frameH": 348,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_glacier_pleco_bite": {
+      "frameW": 714,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.09,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_tiger_pleco_bite": {
+      "frameW": 549,
+      "frameH": 301,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.11
+    },
+    "pet_blue_phantom_pleco_bite": {
+      "frameW": 567,
+      "frameH": 298,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.12
+    },
+    "pet_bone_pleco_bite": {
+      "frameW": 691,
+      "frameH": 369,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.09,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_bounty_pleco_bite": {
+      "frameW": 608,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.12,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_chrome_pleco_bite": {
+      "frameW": 436,
+      "frameH": 335,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.16
+    },
+    "pet_cosmic_pleco_bite": {
+      "frameW": 639,
+      "frameH": 371,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.07,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_cow_pleco_bite": {
+      "frameW": 601,
+      "frameH": 371,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.09,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_jade_pleco_bite": {
+      "frameW": 513,
+      "frameH": 288,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.12
+    },
+    "pet_lava_pleco_bite": {
+      "frameW": 535,
+      "frameH": 369,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.16,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_neon_pleco_bite": {
+      "frameW": 538,
+      "frameH": 333,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ]
+    },
+    "pet_plague_pleco_bite": {
+      "frameW": 638,
+      "frameH": 369,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_royal_pleco_bite": {
+      "frameW": 502,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.13,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_rust_pleco_bite": {
+      "frameW": 546,
+      "frameH": 295,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.13
+    },
+    "pet_solar_pleco_bite": {
+      "frameW": 564,
+      "frameH": 368,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.16,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_storm_pleco_bite": {
+      "frameW": 618,
+      "frameH": 370,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.17,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_titan_pleco_bite": {
+      "frameW": 573,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.17,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_toxic_pleco_bite": {
+      "frameW": 640,
+      "frameH": 367,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.08,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_venom_pleco_bite": {
+      "frameW": 849,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.08,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_void_pleco_bite": {
+      "frameW": 421,
+      "frameH": 265,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.14,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_zebra_pleco_bite": {
+      "frameW": 594,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.07,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_dragon_pleco_bite": {
+      "frameW": 514,
+      "frameH": 342,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.12
+    },
+    "pet_phoenix_pleco_bite": {
+      "frameW": 443,
+      "frameH": 286,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.12,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_abyss_pleco_bite": {
+      "frameW": 425,
+      "frameH": 297,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.11,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_apex_pleco_bite": {
+      "frameW": 611,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.08,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_coral_pleco_bite": {
+      "frameW": 638,
+      "frameH": 370,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.13,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_diamond_pleco_bite": {
+      "frameW": 565,
+      "frameH": 366,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.17,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_ghost_pleco_bite": {
+      "frameW": 621,
+      "frameH": 366,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.23,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_prism_pleco_bite": {
+      "frameW": 533,
+      "frameH": 331,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.17
+    },
+    "pet_golden_pleco_bite": {
+      "frameW": 624,
+      "frameH": 371,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.12,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_cleaner_bite": {
+      "frameW": 657,
+      "frameH": 375,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.1,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_chrome_pleco_barrage": {
+      "frameW": 371,
+      "frameH": 384,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.19,
+      "holds": [
+        1,
+        1,
+        1,
+        19,
+        18,
+        1
+      ]
+    },
+    "pet_lava_pleco_emberVolley": {
+      "frameW": 725,
+      "frameH": 369,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.17,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_glacier_pleco_frostLance": {
+      "frameW": 877,
+      "frameH": 369,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.14,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_gang_pleco_swim": {
+      "frameW": 585,
+      "frameH": 384,
+      "count": 4,
+      "fps": 8
+    },
+    "pet_gang_pleco_idle": {
+      "frameW": 665,
+      "frameH": 384,
+      "count": 6,
+      "fps": 8,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_gang_pleco_eat": {
+      "frameW": 669,
+      "frameH": 384,
+      "count": 7,
+      "fps": 21,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 2
+    },
+    "pet_gang_pleco_bite": {
+      "frameW": 537,
+      "frameH": 302,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ]
+    },
+    "pet_gang_pleco_shoalCall": {
+      "frameW": 478,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.15,
+      "holds": [
+        1,
+        1,
+        1,
+        10,
+        10,
+        1
+      ]
+    },
+    "pet_zebra_pleco_punch": {
+      "frameW": 604,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.06
+    },
+    "pet_samurai_pleco_bite": {
+      "frameW": 517,
+      "frameH": 351,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.1
+    },
+    "pet_viking_pleco_bite": {
+      "frameW": 564,
+      "frameH": 339,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.17
+    },
+    "pet_knight_pleco_bite": {
+      "frameW": 533,
+      "frameH": 365,
+      "count": 6,
+      "fps": 27,
+      "unitScale": 1.08,
+      "holds": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "pet_toxic_pleco_punch": {
+      "frameW": 604,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.25
+    },
+    "pet_glacier_pleco_punch": {
+      "frameW": 565,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.14
+    },
+    "pet_coral_pleco_punch": {
+      "frameW": 646,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.13
+    },
+    "pet_jade_pleco_punch": {
+      "frameW": 513,
+      "frameH": 288,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.12
+    },
+    "pet_storm_pleco_punch": {
+      "frameW": 606,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.02
+    },
+    "pet_spartan_pleco_swim": {
+      "frameW": 474,
+      "frameH": 352,
+      "count": 3,
+      "fps": 18
+    },
+    "pet_spartan_pleco_idle": {
+      "frameW": 471,
+      "frameH": 352,
+      "count": 6,
+      "fps": 20,
+      "holds": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tweened": 1
+    },
+    "pet_spartan_pleco_eat": {
+      "frameW": 469,
+      "frameH": 352,
+      "count": 3,
+      "fps": 15,
+      "unitScale": 1.09
+    },
+    "pet_spartan_pleco_punch": {
+      "frameW": 472,
+      "frameH": 346,
+      "count": 3,
+      "fps": 24,
+      "unitScale": 1
+    },
+    "pet_spartan_pleco_bite": {
+      "frameW": 469,
+      "frameH": 382,
+      "count": 3,
+      "fps": 24,
+      "unitScale": 1
+    },
+    "pet_spartan_pleco_spartanRage": {
+      "frameW": 458,
+      "frameH": 384,
+      "count": 3,
+      "fps": 18,
+      "unitScale": 1.16
+    },
+    "pleco_card_spartan_pleco": {
+      "frameW": 488,
+      "frameH": 361,
+      "count": 1,
+      "fps": 1
+    },
+    "pet_neon_pleco_punch": {
+      "frameW": 538,
+      "frameH": 333,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1
+    },
+    "pet_gang_pleco_punch": {
+      "frameW": 537,
+      "frameH": 302,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1
+    },
+    "pet_bone_pleco_punch": {
+      "frameW": 844,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.18
+    },
+    "pet_solar_pleco_punch": {
+      "frameW": 602,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.14
+    },
+    "pet_plague_pleco_punch": {
+      "frameW": 691,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.11
+    },
+    "pet_abyss_pleco_punch": {
+      "frameW": 601,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.08
+    },
+    "pet_titan_pleco_punch": {
+      "frameW": 661,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.03
+    },
+    "pet_prism_pleco_punch": {
+      "frameW": 533,
+      "frameH": 331,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.17
+    },
+    "pet_rust_pleco_punch": {
+      "frameW": 546,
+      "frameH": 295,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.13
+    },
+    "pet_venom_pleco_punch": {
+      "frameW": 413,
+      "frameH": 384,
+      "count": 3,
+      "fps": 12,
+      "unitScale": 1.3
+    },
+    "pet_chrome_pleco_punch": {
+      "frameW": 436,
+      "frameH": 335,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.16
+    },
+    "pet_mecha_pleco_bite": {
+      "frameW": 548,
+      "frameH": 304,
+      "count": 4,
+      "fps": 27,
+      "holds": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "unitScale": 1.1
+    }
+  }
+}

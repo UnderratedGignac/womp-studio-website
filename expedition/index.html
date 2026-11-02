@@ -1,0 +1,259 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061e2b">
+<meta name="description" content="Dive into Fish Aquarium. A scroll-controlled expedition by Womp Studio.">
+<title>Womp Studio — Every legend starts small.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<div id="asset-loader" role="status"><span></span>Preparing the expedition</div>
+<a class="skip" href="#surface">Skip to expedition</a>
+<canvas id="expedition" aria-label="A pleco equips weapons and explores underwater worlds as you scroll">
+</canvas>
+<div class="scene-scrim" aria-hidden="true">
+</div>
+<div id="card-stage" aria-label="Classic Pleco collectible card">
+<div id="reveal-card">
+<div class="card-face card-front">
+<div class="card-edition">
+<span>Fish Aquarium</span>
+<span>No. 001</span>
+</div>
+<div class="card-stars" aria-hidden="true">✦ ✦ ✦</div>
+<div class="card-art">
+<div class="card-art-orbit" aria-hidden="true">
+</div>
+<img id="card-portrait" src="./assets/intro-card.png" alt="Classic Pleco, the gunner from Fish Aquarium" width="800" height="560" fetchpriority="high">
+</div>
+<div class="card-caption">
+<span class="card-class">Gunner</span>
+<strong>Classic<br>Pleco</strong>
+<p>A small beginning.<br>A whole ocean ahead.</p>
+</div>
+<div class="card-footer">
+<span>Womp Studio</span>
+<span>Scroll to reveal</span>
+</div>
+</div>
+<div class="card-face card-back" aria-hidden="true">
+<div class="card-back-mark">w<span>Fish Aquarium</span>
+</div>
+</div>
+</div>
+</div>
+
+<div id="surface-marker" aria-hidden="true">
+<span>
+</span> Waterline</div>
+<div id="handoff-panel" aria-hidden="true">
+<div class="handoff-top">
+<i>
+</i>
+<span>Changing fighter</span>
+<small>Scroll to continue</small>
+</div>
+<img id="handoff-image" src="./assets/cow_pleco-card.png" alt="" width="800" height="560">
+<p id="handoff-name">Brawler entering</p>
+<strong id="handoff-role">Teeth. Fists. No fear.</strong>
+<div class="handoff-bottom">
+<span>01 / Ranged</span>
+<span>02 / Brawler</span>
+<span>03 / Rearm</span>
+</div>
+</div>
+<header>
+<a class="wordmark" href="#surface" aria-label="Womp Studio home">womp<small>Independent game studio</small>
+</a>
+<nav aria-label="Main navigation">
+<a href="../studio.html">The studio</a>
+<a class="contact" href="#contact">Get in touch <span>↗</span>
+</a>
+</nav>
+</header>
+
+<aside class="depth" aria-label="Expedition controls">
+<span class="depth-kicker">Dive control</span>
+<strong id="depth-readout">000 M</strong>
+<div class="scrub-controls">
+<div class="depth-track" aria-hidden="true">
+<i id="progress-fill">
+</i>
+</div>
+<input id="combat-scrubber" type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub expedition" aria-describedby="scrub-help">
+<div class="scrub-ticks" aria-hidden="true">
+<span>00</span>
+<span>01</span>
+<span>02</span>
+<span>03</span>
+<span>04</span>
+<span>05</span>
+</div>
+</div>
+<span id="chapter-name">SURFACE</span>
+<span id="scroll-direction" role="status">Scroll to fire</span>
+<span id="scrub-help" class="sr-only">Drag to move through the expedition. Scroll down to fire, scroll up to rewind. Stop scrolling to pause.</span>
+</aside>
+
+<main>
+
+<section class="chapter hero" data-chapter="surface" id="surface">
+<span id="awaken" aria-hidden="true">
+</span>
+<div class="copy">
+<p class="eyebrow">
+<i>
+</i> Fish Aquarium, by Womp Studio</p>
+<h1>Every legend<br>starts small.</h1>
+<p class="lede">One card. One unlikely hero.<br>Scroll to bring him into the ocean.</p>
+<a class="dive-link" href="#awaken">
+<span>↓</span> Scroll to awaken <small>Down to advance. Up to rewind.</small>
+</a>
+<div class="intro-stage">
+<span class="intro-stage-dot">
+</span>
+<span id="intro-stage">Choose your fighter</span>
+</div>
+</div>
+<span class="section-no">An ocean of unlikely heroes. Keep going deeper.</span>
+</section>
+
+<section class="chapter" data-chapter="coral" id="coral">
+<div class="copy">
+<p class="eyebrow">01 / Coral Gardens</p>
+<h2>Pretty reef.<br>Ugly company.</h2>
+<p class="lede">Paradise has a hostile side.<br>Equip the Snapper Pistol. Make an entrance.</p>
+<div class="loadout">Loadout 01 <span>Snapper Pistol</span>
+</div>
+</div>
+</section>
+
+<section class="chapter" data-chapter="wreck" id="wreck">
+<div class="copy">
+<p class="eyebrow">02 / Galleon Graveyard</p>
+<h2>Dead ships.<br>Live ammo.</h2>
+<p class="lede">Through the wreck and into the ambush.<br>Time to bring the Kraken Shotgun.</p>
+<div class="loadout">Loadout 02 <span>Kraken Shotgun</span>
+</div>
+</div>
+</section>
+
+<section class="chapter" data-chapter="crystal" id="crystal">
+<div class="copy">
+<p class="eyebrow">03 / Crystal Caverns</p>
+<h2>Light up<br>the dark.</h2>
+<p class="lede">Something moves beyond the crystals.<br>Send the reef minigun to say hello.</p>
+<div class="loadout">Loadout 03 <span>Reef Minigun</span>
+</div>
+</div>
+</section>
+
+<section class="chapter" data-chapter="volcanic" id="volcanic">
+<div class="copy">
+<p class="eyebrow">04 / Volcanic Vents</p>
+<h2>More heat.<br>More boom.</h2>
+<p class="lede">The ocean floor is fighting back.<br>Equip the narwhal railgun. Cut through the heat.</p>
+<div class="loadout">Loadout 04 <span>Narwhal Railgun</span>
+</div>
+</div>
+</section>
+
+<section class="chapter" data-chapter="abyss" id="abyss">
+<div class="copy">
+<p class="eyebrow">05 / The Abyss</p>
+<h2>Big boss.<br>Bigger nerve.</h2>
+<p class="lede">At the bottom, something is waiting.<br>Bring the launcher. Finish what you started.</p>
+<div class="loadout">Final encounter <span>Launcher</span>
+</div>
+</div>
+</section>
+
+<section class="outro" id="contact">
+<p class="eyebrow">You’ve met the squad. Meet the studio.</p>
+<h2>We make<br>play feel alive.</h2>
+<p>Womp Studio is an independent game studio founded by Elie Haddad in Lebanon. Fish Aquarium is our underwater world of unlikely heroes, wild weapons, and adventures worth diving into.</p>
+<a class="outro-contact" href="mailto:eliehaddadh1@gmail.com">Let’s make waves <span>↗</span>
+</a>
+<footer>
+<span>© 2026 Womp Studio</span>
+<span>From Beirut. Built for everywhere.</span>
+<a href="#surface">Back to the surface ↑</a>
+</footer>
+</section>
+
+</main>
+
+<aside class="combat-hud" aria-label="Combat status">
+<div id="battle-mode">AWAKEN YOUR FIGHTER</div>
+<span class="combat-kicker">Your fighter</span>
+<strong class="pleco-name" id="pleco-name">Cleaner Pleco</strong>
+<div class="combat-score">
+<strong id="kill-count">00</strong>
+<span>Hostiles<br>eliminated</span>
+</div>
+<div class="encounter-label">
+<span>Encounter</span>
+<strong id="boss-name">Reef Patrol</strong>
+</div>
+<div class="boss-health" id="boss-health" role="meter" aria-label="Encounter health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+<i id="boss-health-fill">
+</i>
+</div>
+<p>
+<i>
+</i> Down to fire. Up to rewind.</p>
+</aside>
+<div class="bottom-hud">
+<div class="weapon-status">
+<span class="status-dot">
+</span> Equipped <strong id="weapon-name">READY TO DIVE</strong>
+</div>
+<nav class="world-nav" aria-label="World navigation">
+<a href="#surface" aria-label="Surface">
+<small>00</small>
+<span>Surface</span>
+</a>
+<a href="#coral" aria-label="Coral Gardens">
+<small>01</small>
+<span>Coral</span>
+</a>
+<a href="#wreck" aria-label="Galleon Graveyard">
+<small>02</small>
+<span>Wreck</span>
+</a>
+<a href="#crystal" aria-label="Crystal Caverns">
+<small>03</small>
+<span>Crystal</span>
+</a>
+<a href="#volcanic" aria-label="Volcanic Vents">
+<small>04</small>
+<span>Volcanic</span>
+</a>
+<a href="#abyss" aria-label="The Abyss">
+<small>05</small>
+<span>Abyss</span>
+</a>
+</nav>
+<span class="bottom-label">Down to advance / up to rewind</span>
+</div>
+
+<script type="module" src="./main.js">
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
