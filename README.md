@@ -1,26 +1,40 @@
-# Womp Studio website
+# Womp Studio
 
-A static, scroll-controlled underwater expedition for Womp Studio. The homepage follows authentic Fish Aquarium plecos from a collectible card through the water surface, weapon pickups, ranged combat, bite/punch attacks, fighter swaps and six underwater worlds. Scroll upward to rewind the entire sequence.
+Static website and interactive showcase for Womp Studio.
 
-## Run locally
+## Overview
 
-Requires Python 3. No dependencies, build step or environment variables are needed.
+- **Homepage (`index.html`)**: Mounts `expedition/` featuring real local Pleco rigs, character sprites, and scroll-controlled reversible combat.
+- **Studio Archive (`studio.html`)**: Original studio portfolio and project catalog.
+- **Zero Build**: Pure static assets. No build step, package installations, or environment variables required.
 
-```sh
+## Local Development
+
+Start a local server using Python 3:
+
+```bash
 python -m http.server 4173
 ```
 
-Open http://localhost:4173/ . Serve over HTTP rather than opening index.html as a file, because the site uses ES modules and fetches local assets.
+Open http://localhost:4173 . Serve over HTTP rather than opening the HTML as a file.
 
-## Test
+## Testing
 
-Requires Node.js 20 or newer. No npm install is required.
+Requires Node.js 20 or newer. Runs 28 automated tests against bundled test fixtures:
 
-```sh
+```bash
 npm test
 ```
 
-All 28 tests run independently. Source snapshots in test-fixtures/ support canonical game-source parity checks. GitHub Actions runs the tests on pushes and pull requests. Browser automation is not part of these checks.
+## Deployment (Vercel)
+
+1. Import the repository into Vercel.
+2. Set Framework Preset to **Other**, Root Directory to `.`, disable the Build Command and set Output Directory to `.`.
+3. Deploy.
+
+## License & Assets
+
+All artwork, sprites, rigs, and assets are proprietary to Womp Studio. All rights reserved.
 
 ## Files
 
@@ -32,14 +46,8 @@ All 28 tests run independently. Source snapshots in test-fixtures/ support canon
 
 When editing expedition/index.html, update the root index.html mirror and retain its base href="/expedition/".
 
-## Deploy
+## Hosting notes
 
-Import this repository into Vercel. Choose **Other** as the framework, repository root as Root Directory, leave the Build Command empty, and serve the repository root as the output. No secrets or environment variables are required. The .vercel account/project binding is intentionally excluded.
+The root homepage uses base href="/expedition/". Subpath hosts such as GitHub project Pages require adjusting that base. Update preserved studio canonical/sitemap metadata if changing the deployment domain.
 
-Any static host serving the repository root is suitable. For a subpath host such as GitHub project Pages, change the root index.html base to that deployment subpath first. The existing sitemap and canonical metadata in the preserved studio page reference womp-studio.vercel.app; update them if the domain changes.
-
-Google Fonts and the preserved studio page's Three.js/GSAP libraries use external CDNs. Game art and the expedition runtime are bundled locally.
-
-## Ownership
-
-Website and game artwork are proprietary Womp Studio materials. No open-source license is granted by this repository.
+Google Fonts and the preserved studio page's Three.js/GSAP use external CDNs. Expedition art and runtime are bundled locally. GitHub Actions runs npm test. Test fixtures are source snapshots, never loaded by the website. Account bindings, credentials and .vercel are excluded.
