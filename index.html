@@ -1,12 +1,12 @@
 <!doctype html>
-
 <html lang="en">
 <head><base href="/expedition/">
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#061e2b">
-<meta name="description" content="Dive into Fish Aquarium. A scroll-controlled expedition by Womp Studio.">
-<title>Womp Studio — Every legend starts small.</title>
+<meta name="theme-color" content="#031524">
+<meta name="description" content="Dive into Fish Aquarium. A scroll-controlled underwater combat expedition, interactive skeletal rig armory, and reef bestiary by Womp Studio.">
+<title>Womp Studio — Fish Aquarium Interactive Expedition &amp; Armory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -14,246 +14,519 @@
 </head>
 
 <body>
-<div id="asset-loader" role="status"><span></span>Preparing the expedition</div>
+<div id="asset-loader" role="status"><span></span>Preparing the expedition &amp; armory</div>
 <a class="skip" href="#surface">Skip to expedition</a>
-<canvas id="expedition" aria-label="A pleco equips weapons and explores underwater worlds as you scroll">
-</canvas>
-<div class="scene-scrim" aria-hidden="true">
-</div>
-<div id="card-stage" aria-label="Classic Pleco collectible card">
-<div id="reveal-card">
-<div class="card-face card-front">
-<div class="card-edition">
-<span>Fish Aquarium</span>
-<span>No. 001</span>
-</div>
-<div class="card-stars" aria-hidden="true">✦ ✦ ✦</div>
-<div class="card-art">
-<div class="card-art-orbit" aria-hidden="true">
-</div>
-<img id="card-portrait" src="./assets/intro-card.png" alt="Classic Pleco, the gunner from Fish Aquarium" width="800" height="560" fetchpriority="high">
-</div>
-<div class="card-caption">
-<span class="card-class">Gunner</span>
-<strong>Classic<br>Pleco</strong>
-<p>A small beginning.<br>A whole ocean ahead.</p>
-</div>
-<div class="card-footer">
-<span>Womp Studio</span>
-<span>Scroll to reveal</span>
-</div>
-</div>
-<div class="card-face card-back" aria-hidden="true">
-<div class="card-back-mark">w<span>Fish Aquarium</span>
-</div>
-</div>
-</div>
+<canvas id="expedition" aria-label="A pleco equips weapons and explores underwater worlds as you scroll"></canvas>
+<div class="scene-scrim" aria-hidden="true"></div>
+
+<div id="card-stage" aria-label="Collectible fighter card">
+  <div id="reveal-card">
+    <div class="card-face card-front">
+      <div class="card-edition">
+        <span>Fish Aquarium</span>
+        <span id="card-number">No. 001</span>
+      </div>
+      <div class="card-stars" aria-hidden="true">✦ ✦ ✦</div>
+      <div class="card-art">
+        <div class="card-art-orbit" aria-hidden="true"></div>
+        <img id="card-portrait" src="./assets/intro-card.png" alt="Classic Pleco, the gunner from Fish Aquarium" width="800" height="560" fetchpriority="high">
+      </div>
+      <div class="card-caption">
+        <span class="card-class" id="card-class-badge">Gunner</span>
+        <strong id="card-title">Classic<br>Pleco</strong>
+        <p id="card-lore">A small beginning.<br>A whole ocean ahead.</p>
+      </div>
+      <div class="card-footer">
+        <span>Womp Studio</span>
+        <span>Scroll to reveal</span>
+      </div>
+    </div>
+    <div class="card-face card-back" aria-hidden="true">
+      <div class="card-back-mark">w<span>Fish Aquarium</span></div>
+    </div>
+  </div>
 </div>
 
-<div id="surface-marker" aria-hidden="true">
-<span>
-</span> Waterline</div>
+<div id="surface-marker" aria-hidden="true"><span></span> Waterline</div>
+
 <div id="handoff-panel" aria-hidden="true">
-<div class="handoff-top">
-<i>
-</i>
-<span>Changing fighter</span>
-<small>Scroll to continue</small>
+  <div class="handoff-top">
+    <i></i>
+    <span>Changing fighter</span>
+    <small>Scroll to continue</small>
+  </div>
+  <img id="handoff-image" src="./assets/cow_pleco-card.png" alt="" width="800" height="560">
+  <p id="handoff-name">Brawler entering</p>
+  <strong id="handoff-role">Teeth. Fists. No fear.</strong>
+  <div class="handoff-bottom">
+    <span>01 / Ranged</span>
+    <span>02 / Brawler</span>
+    <span>03 / Rearm</span>
+  </div>
 </div>
-<img id="handoff-image" src="./assets/cow_pleco-card.png" alt="" width="800" height="560">
-<p id="handoff-name">Brawler entering</p>
-<strong id="handoff-role">Teeth. Fists. No fear.</strong>
-<div class="handoff-bottom">
-<span>01 / Ranged</span>
-<span>02 / Brawler</span>
-<span>03 / Rearm</span>
-</div>
-</div>
+
 <header>
-<a class="wordmark" href="#surface" aria-label="Womp Studio home">womp<small>Independent game studio</small>
-</a>
-<nav aria-label="Main navigation">
-<a href="../studio.html">The studio</a>
-<a class="contact" href="#contact">Get in touch <span>↗</span>
-</a>
-</nav>
+  <a class="wordmark" href="#surface" aria-label="Womp Studio home">
+    <span class="wordmark-row">womp<i class="wordmark-dot" aria-hidden="true"></i></span>
+    <small>Independent game studio</small>
+  </a>
+  <nav aria-label="Main navigation">
+    <a href="#surface">Expedition</a>
+    <a href="#armory">Armory Lab</a>
+    <a href="#bestiary">Reef Bestiary</a>
+    <a href="#gallery">Gameplay</a>
+    <a href="../studio.html">The Studio</a>
+    <button type="button" class="hud-btn" id="auto-dive-btn" aria-pressed="false" title="Toggle automatic dive cruise">
+      <span class="hud-btn-dot" aria-hidden="true"></span>
+      <span id="auto-dive-label">Auto-Dive</span>
+    </button>
+    <button type="button" class="hud-btn" id="sound-toggle-btn" aria-pressed="false" title="Toggle synthesized underwater sound FX">
+      <span class="hud-btn-dot" aria-hidden="true"></span>
+      <span id="sound-toggle-label">Sound FX</span>
+    </button>
+    <a class="contact" href="#contact">Get in touch <span>↗</span></a>
+  </nav>
 </header>
 
 <aside class="depth" aria-label="Expedition controls">
-<span class="depth-kicker">Dive control</span>
-<strong id="depth-readout">000 M</strong>
-<div class="scrub-controls">
-<div class="depth-track" aria-hidden="true">
-<i id="progress-fill">
-</i>
-</div>
-<input id="combat-scrubber" type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub expedition" aria-describedby="scrub-help">
-<div class="scrub-ticks" aria-hidden="true">
-<span>00</span>
-<span>01</span>
-<span>02</span>
-<span>03</span>
-<span>04</span>
-<span>05</span>
-</div>
-</div>
-<span id="chapter-name">SURFACE</span>
-<span id="scroll-direction" role="status">Scroll to fire</span>
-<span id="scrub-help" class="sr-only">Drag to move through the expedition. Scroll down to fire, scroll up to rewind. Stop scrolling to pause.</span>
+  <span class="depth-kicker">Dive control</span>
+  <strong id="depth-readout">0000 M</strong>
+  <div class="scrub-controls">
+    <div class="depth-track" aria-hidden="true">
+      <i id="progress-fill"></i>
+    </div>
+    <input id="combat-scrubber" type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub expedition" aria-describedby="scrub-help">
+    <div class="scrub-ticks" aria-hidden="true">
+      <span>00</span>
+      <span>01</span>
+      <span>02</span>
+      <span>03</span>
+      <span>04</span>
+      <span>05</span>
+    </div>
+  </div>
+  <span id="chapter-name">SURFACE</span>
+  <span id="scroll-direction" role="status">Scroll to fire</span>
+  <span id="scrub-help" class="sr-only">Drag to move through the expedition. Scroll down to fire, scroll up to rewind. Stop scrolling to pause.</span>
 </aside>
 
 <main>
 
 <section class="chapter hero" data-chapter="surface" id="surface">
-<span id="awaken" aria-hidden="true">
-</span>
-<div class="copy">
-<p class="eyebrow">
-<i>
-</i> Fish Aquarium, by Womp Studio</p>
-<h1>Every legend<br>starts small.</h1>
-<p class="lede">One card. One unlikely hero.<br>Scroll to bring him into the ocean.</p>
-<a class="dive-link" href="#awaken">
-<span>↓</span> Scroll to awaken <small>Down to advance. Up to rewind.</small>
-</a>
-<div class="intro-stage">
-<span class="intro-stage-dot">
-</span>
-<span id="intro-stage">Choose your fighter</span>
-</div>
-</div>
-<span class="section-no">An ocean of unlikely heroes. Keep going deeper.</span>
+  <span id="awaken" aria-hidden="true"></span>
+  <div class="copy">
+    <p class="eyebrow"><i></i> Fish Aquarium · Womp Studio</p>
+    <h1>Every legend<br>starts <em>small.</em></h1>
+    <p class="lede">One collectible card. One unlikely armored pleco.<br>Scroll down to awaken the rig, dive beneath the waves, and command the reef.</p>
+    <div class="card-picker" aria-label="Inspect collectible fighter cards">
+      <span class="card-picker-label">Inspect collectible edition card</span>
+      <div class="card-picker-Track">
+        <button type="button" class="card-pill active" data-card-id="cleaner" data-card-num="No. 001" data-card-class="Gunner" data-card-title="Classic Pleco" data-card-lore="A small beginning. A whole ocean ahead." data-card-img="./assets/intro-card.png">
+          <img src="./assets/intro-card.png" alt="" width="22" height="22"> Classic
+        </button>
+        <button type="button" class="card-pill" data-card-id="cow_pleco" data-card-num="No. 002" data-card-class="Heavy Brawler" data-card-title="Cow Pleco" data-card-lore="Spotted armor. Crushing bite and close-quarters hooks." data-card-img="./assets/cow_pleco-card.png">
+          <img src="./assets/cow_pleco-card.png" alt="" width="22" height="22"> Cow Pleco
+        </button>
+        <button type="button" class="card-pill" data-card-id="golden_pleco" data-card-num="No. 003" data-card-class="Apex Striker" data-card-title="Golden Pleco" data-card-lore="Gilded scales forged for deep-trench firefights." data-card-img="./assets/golden_pleco-card.png">
+          <img src="./assets/golden_pleco-card.png" alt="" width="22" height="22"> Golden
+        </button>
+      </div>
+    </div>
+    <a class="dive-link" href="#awaken">
+      <span>↓</span> Scroll to awaken <small>Down to advance · Up to rewind</small>
+    </a>
+    <div class="intro-stage">
+      <span class="intro-stage-dot"></span>
+      <span id="intro-stage">Choose your fighter</span>
+    </div>
+  </div>
+  <span class="section-no">00 / Surface Horizon — An ocean of unlikely heroes</span>
 </section>
 
 <section class="chapter" data-chapter="coral" id="coral">
-<div class="copy">
-<p class="eyebrow">01 / Coral Gardens</p>
-<h2>Pretty reef.<br>Ugly company.</h2>
-<p class="lede">Paradise has a hostile side.<br>Equip the Snapper Pistol. Make an entrance.</p>
-<div class="loadout">Loadout 01 <span>Snapper Pistol</span>
-</div>
-</div>
+  <div class="copy">
+    <p class="eyebrow"><i></i> 01 / Coral Gardens · 400M</p>
+    <h2>Pretty reef.<br><em>Ugly</em> company.</h2>
+    <p class="lede">Sunlit coral shelves hide a hostile welcoming party.<br>Equip the Snapper Pistol and clear the patrol lane.</p>
+    <div class="loadout-card">
+      <div class="loadout">Loadout 01 <span>Snapper Pistol</span></div>
+      <div class="loadout-visual">
+        <img class="loadout-gun-img" src="./assets/snapperpistol.png" alt="Snapper Pistol" width="92" height="48">
+        <div class="loadout-specs">
+          <div class="spec-item"><small>Class</small><strong>Semi-Auto Pistol</strong></div>
+          <div class="spec-item"><small>Fire Rate</small><strong>3.2 Shots/s</strong></div>
+          <div class="spec-item"><small>Trajectory</small><strong>Flat Hydro-Bolt</strong></div>
+          <div class="spec-item"><small>Melee Swap</small><strong>Bite + Hook</strong></div>
+        </div>
+      </div>
+      <div class="encounter-strip">
+        <div class="encounter-fighter">
+          <img src="./assets/fighter-1.png" alt="Blue Phantom Pleco" width="28" height="28">
+          <span>Blue Phantom</span>
+        </div>
+        <span class="encounter-boss-tag">Boss: Coralgolem</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="chapter" data-chapter="wreck" id="wreck">
-<div class="copy">
-<p class="eyebrow">02 / Galleon Graveyard</p>
-<h2>Dead ships.<br>Live ammo.</h2>
-<p class="lede">Through the wreck and into the ambush.<br>Time to bring the Kraken Shotgun.</p>
-<div class="loadout">Loadout 02 <span>Kraken Shotgun</span>
-</div>
-</div>
+  <div class="copy">
+    <p class="eyebrow"><i></i> 02 / Galleon Graveyard · 880M</p>
+    <h2>Dead ships.<br><em>Live</em> ammo.</h2>
+    <p class="lede">Sunken hulls and ghost crabs crowd the ambush lane.<br>Rack the Kraken Shotgun for a three-pellet spread.</p>
+    <div class="loadout-card">
+      <div class="loadout">Loadout 02 <span>Kraken Shotgun</span></div>
+      <div class="loadout-visual">
+        <img class="loadout-gun-img" src="./assets/krakenshotgun.png" alt="Kraken Shotgun" width="92" height="48">
+        <div class="loadout-specs">
+          <div class="spec-item"><small>Class</small><strong>Spread Buckshot</strong></div>
+          <div class="spec-item"><small>Volley</small><strong>3 Pellets / Burst</strong></div>
+          <div class="spec-item"><small>Trajectory</small><strong>Wide Cone</strong></div>
+          <div class="spec-item"><small>Hostiles</small><strong>Ghost Crab &amp; Shark</strong></div>
+        </div>
+      </div>
+      <div class="encounter-strip">
+        <div class="encounter-fighter">
+          <img src="./assets/fighter-2.png" alt="Lava Pleco" width="28" height="28">
+          <span>Lava Pleco</span>
+        </div>
+        <span class="encounter-boss-tag">Boss: Phantom</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="chapter" data-chapter="crystal" id="crystal">
-<div class="copy">
-<p class="eyebrow">03 / Crystal Caverns</p>
-<h2>Light up<br>the dark.</h2>
-<p class="lede">Something moves beyond the crystals.<br>Send the reef minigun to say hello.</p>
-<div class="loadout">Loadout 03 <span>Reef Minigun</span>
-</div>
-</div>
+  <div class="copy">
+    <p class="eyebrow"><i></i> 03 / Crystal Caverns · 1360M</p>
+    <h2>Light up<br>the <em>dark.</em></h2>
+    <p class="lede">Bioluminescent quartz refracts every tracer round.<br>Spin up the Reef Minigun to shred the swarm.</p>
+    <div class="loadout-card">
+      <div class="loadout">Loadout 03 <span>Reef Minigun</span></div>
+      <div class="loadout-visual">
+        <img class="loadout-gun-img" src="./assets/reefminigun.png" alt="Reef Minigun" width="92" height="48">
+        <div class="loadout-specs">
+          <div class="spec-item"><small>Class</small><strong>Rotary SMG</strong></div>
+          <div class="spec-item"><small>Fire Rate</small><strong>Rapid Stream</strong></div>
+          <div class="spec-item"><small>Trajectory</small><strong>Hydro-Wobble</strong></div>
+          <div class="spec-item"><small>Wingman</small><strong>Neon Pleco (Rail)</strong></div>
+        </div>
+      </div>
+      <div class="encounter-strip">
+        <div class="encounter-fighter">
+          <img src="./assets/fighter-3.png" alt="Golden Pleco" width="28" height="28">
+          <span>Golden Pleco</span>
+        </div>
+        <span class="encounter-boss-tag">Boss: Glassray</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="chapter" data-chapter="volcanic" id="volcanic">
-<div class="copy">
-<p class="eyebrow">04 / Volcanic Vents</p>
-<h2>More heat.<br>More boom.</h2>
-<p class="lede">The ocean floor is fighting back.<br>Equip the narwhal railgun. Cut through the heat.</p>
-<div class="loadout">Loadout 04 <span>Narwhal Railgun</span>
-</div>
-</div>
+  <div class="copy">
+    <p class="eyebrow"><i></i> 04 / Volcanic Vents · 1880M</p>
+    <h2>More heat.<br>More <em>boom.</em></h2>
+    <p class="lede">Magma fissures boil the seafloor as armored scarabs charge.<br>Pierce the column with the Narwhal Railgun.</p>
+    <div class="loadout-card">
+      <div class="loadout">Loadout 04 <span>Narwhal Railgun</span></div>
+      <div class="loadout-visual">
+        <img class="loadout-gun-img" src="./assets/narwhalrail.png" alt="Narwhal Railgun" width="92" height="48">
+        <div class="loadout-specs">
+          <div class="spec-item"><small>Class</small><strong>Precision Sniper</strong></div>
+          <div class="spec-item"><small>Penetration</small><strong>Multi-Target Pierce</strong></div>
+          <div class="spec-item"><small>Trajectory</small><strong>Ballistic Lance</strong></div>
+          <div class="spec-item"><small>Wingman</small><strong>Chrome Pleco</strong></div>
+        </div>
+      </div>
+      <div class="encounter-strip">
+        <div class="encounter-fighter">
+          <img src="./assets/fighter-4.png" alt="Cosmic Pleco" width="28" height="28">
+          <span>Cosmic Pleco</span>
+        </div>
+        <span class="encounter-boss-tag">Boss: Obsidianfish</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="chapter" data-chapter="abyss" id="abyss">
-<div class="copy">
-<p class="eyebrow">05 / The Abyss</p>
-<h2>Big boss.<br>Bigger nerve.</h2>
-<p class="lede">At the bottom, something is waiting.<br>Bring the launcher. Finish what you started.</p>
-<div class="loadout">Final encounter <span>Launcher</span>
-</div>
-</div>
+  <div class="copy">
+    <p class="eyebrow"><i></i> 05 / The Abyss · 2400M</p>
+    <h2>Big boss.<br>Bigger <em>nerve.</em></h2>
+    <p class="lede">At the crushing bottom of the trench, the Abyssal Leviathan waits.<br>Unleash the Clam Cannon and finish what you started.</p>
+    <div class="loadout-card">
+      <div class="loadout">Final encounter <span>Clam Cannon</span></div>
+      <div class="loadout-visual">
+        <img class="loadout-gun-img" src="./assets/clamcannon.png" alt="Clam Cannon" width="92" height="48">
+        <div class="loadout-specs">
+          <div class="spec-item"><small>Class</small><strong>Heavy Ordnance</strong></div>
+          <div class="spec-item"><small>Impact</small><strong>Explosive Splash</strong></div>
+          <div class="spec-item"><small>Trajectory</small><strong>Heavy Lobbing Arc</strong></div>
+          <div class="spec-item"><small>Threat</small><strong>Abyssal Apex</strong></div>
+        </div>
+      </div>
+      <div class="encounter-strip">
+        <div class="encounter-fighter">
+          <img src="./assets/fighter-5.png" alt="Blue Phantom Apex" width="28" height="28">
+          <span>Phantom Squad</span>
+        </div>
+        <span class="encounter-boss-tag">Boss: Abyssal</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- INTERACTIVE CODEX, ARMORY, SANCTUARY & STUDIO FINALE -->
 <section class="outro" id="contact">
-<p class="eyebrow">You’ve met the squad. Meet the studio.</p>
-<h2>We make<br>play feel alive.</h2>
-<p>Womp Studio is an independent game studio founded by Elie Haddad in Lebanon. Fish Aquarium is our underwater world of unlikely heroes, wild weapons, and adventures worth diving into.</p>
-<a class="outro-contact" href="mailto:eliehaddadh1@gmail.com">Let’s make waves <span>↗</span>
-</a>
-<footer>
-<span>© 2026 Womp Studio</span>
-<span>From Beirut. Built for everywhere.</span>
-<a href="#surface">Back to the surface ↑</a>
-</footer>
+
+  <!-- 1. INTERACTIVE PLECO RIG & ARMORY LAB -->
+  <div class="codex-block" id="armory">
+    <div class="codex-header">
+      <div>
+        <p class="eyebrow"><i></i> Interactive Skeletal Rig &amp; Ballistics Lab</p>
+        <h2>Customize your <em>fighter.</em></h2>
+      </div>
+      <p>Test the authentic Canvas2D skeletal mesh renderer, 8 Pleco skins, 5 canonical weapons, and melee sprite strips in real time. Click inside the firing range or tap Test Volley to fire.</p>
+    </div>
+
+    <div class="armory-grid">
+      <div class="armory-stage-wrap">
+        <div class="armory-stage-overlay">
+          <span class="armory-badge" id="armory-readout">Cleaner · Snapper Pistol</span>
+          <span class="armory-badge" id="armory-stats-pill">DMG 1.0× · 3.2 RPS</span>
+        </div>
+        <canvas id="armory-canvas" width="720" height="360" aria-label="Interactive Pleco rig customizer and firing range"></canvas>
+        <div class="armory-actions">
+          <button type="button" class="armory-action-btn active" data-armory-mode="fire">Live Fire Range</button>
+          <button type="button" class="armory-action-btn" data-armory-mode="swim">Unarmed Cruise</button>
+          <button type="button" class="armory-action-btn" data-armory-mode="bite">Melee: Bite</button>
+          <button type="button" class="armory-action-btn" data-armory-mode="punch">Melee: Punch</button>
+          <button type="button" class="armory-action-btn" id="armory-burst-btn">⚡ Fire Super Volley</button>
+        </div>
+      </div>
+
+      <div class="armory-controls">
+        <div>
+          <span class="control-group-title">01 / Select Pleco Rig Skin (8 Authentic Meshes)</span>
+          <div class="skin-grid" id="skin-picker">
+            <button type="button" class="skin-btn active" data-skin="cleaner">Cleaner</button>
+            <button type="button" class="skin-btn" data-skin="blue_phantom_pleco">Blue Phantom</button>
+            <button type="button" class="skin-btn" data-skin="lava_pleco">Lava</button>
+            <button type="button" class="skin-btn" data-skin="golden_pleco">Golden</button>
+            <button type="button" class="skin-btn" data-skin="cosmic_pleco">Cosmic</button>
+            <button type="button" class="skin-btn" data-skin="chrome_pleco">Chrome</button>
+            <button type="button" class="skin-btn" data-skin="neon_pleco">Neon</button>
+            <button type="button" class="skin-btn" data-skin="cow_pleco">Cow Pleco</button>
+          </div>
+        </div>
+
+        <div>
+          <span class="control-group-title">02 / Equip Sea Arsenal (5 Game Weapons)</span>
+          <div class="weapon-grid" id="weapon-picker">
+            <button type="button" class="weapon-pick-btn active" data-weapon-idx="0">
+              <div class="weapon-pick-meta"><strong>Snapper Pistol</strong><small>Pistol · Fast flat bolts</small></div>
+              <img src="./assets/snapperpistol.png" alt="Snapper Pistol" width="64" height="32">
+            </button>
+            <button type="button" class="weapon-pick-btn" data-weapon-idx="1">
+              <div class="weapon-pick-meta"><strong>Kraken Shotgun</strong><small>Shotgun · 3-pellet buckshot spread</small></div>
+              <img src="./assets/krakenshotgun.png" alt="Kraken Shotgun" width="64" height="32">
+            </button>
+            <button type="button" class="weapon-pick-btn" data-weapon-idx="2">
+              <div class="weapon-pick-meta"><strong>Reef Minigun</strong><small>SMG · High-RPM hydro-wobble stream</small></div>
+              <img src="./assets/reefminigun.png" alt="Reef Minigun" width="64" height="32">
+            </button>
+            <button type="button" class="weapon-pick-btn" data-weapon-idx="3">
+              <div class="weapon-pick-meta"><strong>Narwhal Rail</strong><small>Sniper · High-velocity piercing lance</small></div>
+              <img src="./assets/narwhalrail.png" alt="Narwhal Rail" width="64" height="32">
+            </button>
+            <button type="button" class="weapon-pick-btn" data-weapon-idx="4">
+              <div class="weapon-pick-meta"><strong>Clam Cannon</strong><small>Cannon · Heavy explosive splash shell</small></div>
+              <img src="./assets/clamcannon.png" alt="Clam Cannon" width="64" height="32">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. INTERACTIVE CORAL SANCTUARY TANK & ANIMATED BESTIARY -->
+  <div class="codex-block" id="bestiary">
+    <div class="codex-header">
+      <div>
+        <p class="eyebrow"><i></i> Living Coral Sanctuary &amp; Marine Codex</p>
+        <h2>Meet the <em>inhabitants.</em></h2>
+      </div>
+      <p>Every sanctuary species, reef predator, and trench boss animated from the official sprite sheets. Click anywhere inside the Coral Sanctuary Tank below to drop food pellets and watch the school frenzy!</p>
+    </div>
+
+    <div class="sanctuary-tank-card">
+      <div class="sanctuary-hud">
+        <span class="sanctuary-pill">🐠 Interactive Sanctuary Tank · 14 Species Active</span>
+        <button type="button" class="sanctuary-feed-btn" id="drop-food-btn">✦ Drop Feast Pellets</button>
+      </div>
+      <canvas id="sanctuary-canvas" width="1160" height="380" aria-label="Interactive coral aquarium with 14 swimming fish species"></canvas>
+    </div>
+
+    <div class="filter-tabs" role="tablist" aria-label="Filter marine codex">
+      <button type="button" class="filter-tab active" data-bestiary-filter="all">All Species (28)</button>
+      <button type="button" class="filter-tab" data-bestiary-filter="sanctuary">Sanctuary Fish (14)</button>
+      <button type="button" class="filter-tab" data-bestiary-filter="enemy">Hostile Raiders (9)</button>
+      <button type="button" class="filter-tab" data-bestiary-filter="boss">Trench Bosses (5)</button>
+    </div>
+
+    <div class="bestiary-grid" id="bestiary-grid"></div>
+  </div>
+
+  <!-- 3. AUTHENTIC GAMEPLAY SCREENSHOTS SHOWCASE -->
+  <div class="codex-block" id="gallery">
+    <div class="codex-header">
+      <div>
+        <p class="eyebrow"><i></i> Android Build Captures · 60 FPS Landscape</p>
+        <h2>Three modes, <em>one save.</em></h2>
+      </div>
+      <p>Explore authentic in-game captures from Fish Aquarium across Defense Run, Pleco Rampage, Boons &amp; Deckbuilding, and the Idle Sanctuary Shop. Click any capture to inspect full screen.</p>
+    </div>
+
+    <div class="filter-tabs" role="tablist" aria-label="Filter gameplay screenshots">
+      <button type="button" class="filter-tab active" data-shot-filter="all">All Captures (8)</button>
+      <button type="button" class="filter-tab" data-shot-filter="defense">Wave Defense &amp; Bosses</button>
+      <button type="button" class="filter-tab" data-shot-filter="cards">Deck, Boons &amp; Last Stand</button>
+      <button type="button" class="filter-tab" data-shot-filter="sanctuary">Sanctuary &amp; Shop</button>
+    </div>
+
+    <div class="shots-grid" id="shots-grid">
+      <article class="shot-card" data-shot-cat="defense" data-shot-src="../img/shot-defense.webp" data-shot-title="Reef Defense Formation">
+        <img src="../img/shot-defense.webp" alt="Guardian Tower wave defense gameplay" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Mode 01 · Defense Run</span>
+          <strong>Guard the Reef Tower</strong>
+          <p>Deploy defenders around the Guardian Tower and trigger timed skills against incoming waves.</p>
+        </div>
+      </article>
+      <article class="shot-card" data-shot-cat="defense" data-shot-src="../img/shot-boss.webp" data-shot-title="Boss Wave Clash">
+        <img src="../img/shot-boss.webp" alt="Boss encounter in Fish Aquarium" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Every 5th Wave · Boss Raid</span>
+          <strong>Leviathan Boss Clash</strong>
+          <p>High-health trench bosses test your squad positioning, weapon loadouts, and burst timing.</p>
+        </div>
+      </article>
+      <article class="shot-card" data-shot-cat="defense" data-shot-src="../img/shot-waves.webp" data-shot-title="Multi-Lane Swarm">
+        <img src="../img/shot-waves.webp" alt="Multi-lane enemy wave combat" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Mode 02 · Pleco Rampage</span>
+          <strong>Heavy Ordnance &amp; Swarms</strong>
+          <p>60 FPS object-pooled projectile physics cutting through dense multi-lane aquatic swarms.</p>
+        </div>
+      </article>
+      <article class="shot-card" data-shot-cat="cards" data-shot-src="../img/shot-laststand.webp" data-shot-title="Last Stand Escalation">
+        <img src="../img/shot-laststand.webp" alt="Last Stand combat phase" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Climax Phase · Last Stand</span>
+          <strong>Hold the Final Line</strong>
+          <p>All-out ability chains, venom clouds, nova blasts, and shields firing in unison.</p>
+        </div>
+      </article>
+      <article class="shot-card" data-shot-cat="cards" data-shot-src="../img/shot-boons.webp" data-shot-title="Tactical Run Boons">
+        <img src="../img/shot-boons.webp" alt="Run boons selection screen" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Roguelite Progression · Boons</span>
+          <strong>Draft Mid-Run Modifiers</strong>
+          <p>Stack synergistic combat boons between waves to supercharge reload speed, splash, and crit.</p>
+        </div>
+      </article>
+      <article class="shot-card" data-shot-cat="cards" data-shot-src="../img/shot-cards.webp" data-shot-title="64-Species Roster &amp; Deck">
+        <img src="../img/shot-cards.webp" alt="Species card deck builder" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Collection · 64 Species</span>
+          <strong>Build Your Combat Deck</strong>
+          <p>Combine damage, stun, venom, nova, slow, shield, feed, and gold specialists.</p>
+        </div>
+      </article>
+      <article class="shot-card" data-shot-cat="sanctuary" data-shot-src="../img/shot-feeding.webp" data-shot-title="Aquarium Sanctuary Feeding">
+        <img src="../img/shot-feeding.webp" alt="Feeding fish in Aquarium Sanctuary" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Mode 03 · Aquarium Sanctuary</span>
+          <strong>Feed, Grow &amp; Compound</strong>
+          <p>Nurture your collection in a living tank where elder fish pay back 1.8× and every meal compounds.</p>
+        </div>
+      </article>
+      <article class="shot-card" data-shot-cat="sanctuary" data-shot-src="../img/shot-shop.webp" data-shot-title="Sanctuary Estate &amp; Upgrades">
+        <img src="../img/shot-shop.webp" alt="Aquarium shop and progression upgrades" loading="lazy" width="640" height="360">
+        <div class="shot-caption">
+          <span>Unified Economy · One Save</span>
+          <strong>Sanctuary Shop &amp; Upgrades</strong>
+          <p>Reinvest defense winnings into rare species, tank expansions, and ascension upgrades.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 4. STUDIO FINALE CTA -->
+  <div class="studio-cta-box">
+    <p class="eyebrow"><i></i> You’ve met the squad · Meet the studio</p>
+    <h2>We make<br>play feel <em>alive.</em></h2>
+    <p>Womp Studio is an independent game studio founded by Elie Haddad in Beirut, Lebanon. Fish Aquarium is our underwater world of unlikely heroes, wild weapons, and deeply systemic mobile play built to hold 60 FPS on everyday phones.</p>
+    <div class="outro-actions">
+      <a class="outro-contact" href="mailto:eliehaddadh1@gmail.com">Let’s make waves <span>↗</span></a>
+      <a class="outro-secondary" href="../studio.html">Explore Full Studio Profile &amp; Architecture →</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Womp Studio · Elie Haddad</span>
+    <span>From Beirut. Built for everywhere.</span>
+    <a href="#surface">Back to the surface ↑</a>
+  </footer>
 </section>
 
 </main>
 
-<aside class="combat-hud" aria-label="Combat status">
-<div id="battle-mode">AWAKEN YOUR FIGHTER</div>
-<span class="combat-kicker">Your fighter</span>
-<strong class="pleco-name" id="pleco-name">Cleaner Pleco</strong>
-<div class="combat-score">
-<strong id="kill-count">00</strong>
-<span>Hostiles<br>eliminated</span>
-</div>
-<div class="encounter-label">
-<span>Encounter</span>
-<strong id="boss-name">Reef Patrol</strong>
-</div>
-<div class="boss-health" id="boss-health" role="meter" aria-label="Encounter health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
-<i id="boss-health-fill">
-</i>
-</div>
-<p>
-<i>
-</i> Down to fire. Up to rewind.</p>
-</aside>
-<div class="bottom-hud">
-<div class="weapon-status">
-<span class="status-dot">
-</span> Equipped <strong id="weapon-name">READY TO DIVE</strong>
-</div>
-<nav class="world-nav" aria-label="World navigation">
-<a href="#surface" aria-label="Surface">
-<small>00</small>
-<span>Surface</span>
-</a>
-<a href="#coral" aria-label="Coral Gardens">
-<small>01</small>
-<span>Coral</span>
-</a>
-<a href="#wreck" aria-label="Galleon Graveyard">
-<small>02</small>
-<span>Wreck</span>
-</a>
-<a href="#crystal" aria-label="Crystal Caverns">
-<small>03</small>
-<span>Crystal</span>
-</a>
-<a href="#volcanic" aria-label="Volcanic Vents">
-<small>04</small>
-<span>Volcanic</span>
-</a>
-<a href="#abyss" aria-label="The Abyss">
-<small>05</small>
-<span>Abyss</span>
-</a>
-</nav>
-<span class="bottom-label">Down to advance / up to rewind</span>
+<div class="lightbox-modal" id="shot-lightbox" hidden role="dialog" aria-modal="true" aria-label="Gameplay screenshot preview">
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="./assets/intro-card.png" alt="">
+    <div class="lightbox-bar">
+      <strong id="lightbox-title">Gameplay Preview</strong>
+      <button type="button" class="lightbox-close" id="lightbox-close-btn">Close ✕</button>
+    </div>
+  </div>
 </div>
 
-<script type="module" src="./main.js">
-</script>
+<aside class="combat-hud" aria-label="Combat status">
+  <div id="battle-mode">AWAKEN YOUR FIGHTER</div>
+  <span class="combat-kicker">Your fighter</span>
+  <strong class="pleco-name" id="pleco-name">Cleaner Pleco</strong>
+  <div class="combat-score">
+    <strong id="kill-count">00</strong>
+    <span>Hostiles<br>eliminated</span>
+  </div>
+  <div class="encounter-label">
+    <span>Encounter</span>
+    <strong id="boss-name">Reef Patrol</strong>
+  </div>
+  <div class="boss-health" id="boss-health" role="meter" aria-label="Encounter health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+    <i id="boss-health-fill"></i>
+  </div>
+  <p><i></i> Down to fire. Up to rewind.</p>
+</aside>
+
+<div class="bottom-hud">
+  <div class="weapon-status">
+    <span class="status-dot"></span> Equipped <strong id="weapon-name">READY TO DIVE</strong>
+  </div>
+  <nav class="world-nav" aria-label="World navigation">
+    <a href="#surface" aria-label="Surface"><small>00</small><span>Surface</span></a>
+    <a href="#coral" aria-label="Coral Gardens"><small>01</small><span>Coral</span></a>
+    <a href="#wreck" aria-label="Galleon Graveyard"><small>02</small><span>Wreck</span></a>
+    <a href="#crystal" aria-label="Crystal Caverns"><small>03</small><span>Crystal</span></a>
+    <a href="#volcanic" aria-label="Volcanic Vents"><small>04</small><span>Volcanic</span></a>
+    <a href="#abyss" aria-label="The Abyss"><small>05</small><span>Abyss</span></a>
+  </nav>
+  <span class="bottom-label">Down to advance / up to rewind</span>
+</div>
+
+<script type="module" src="./main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

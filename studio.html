@@ -247,6 +247,30 @@ html.js [data-reveal]{opacity:0;transform:translateY(28px)}
   #preloader{display:none}
   h2 .w{transform:none;opacity:1}
 }
+
+/* Enhanced Game Art Showcases in Studio Page */
+.mode-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin-bottom:1.1rem;border:1px solid var(--line);transition:transform .4s var(--ease)}
+.mode:hover .mode-thumb{transform:scale(1.03)}
+.studio-tank-wrap{margin-top:2.8rem;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--panel);position:relative;box-shadow:0 24px 64px rgba(0,0,0,.45)}
+.studio-tank-bar{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.4rem;border-bottom:1px solid var(--line);background:rgba(7,7,12,.65);flex-wrap:wrap;gap:.8rem}
+.studio-tank-bar span{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);font-weight:600}
+.studio-tank-btn{appearance:none;border:1px solid var(--cyan);background:rgba(55,230,213,.14);color:var(--ink);padding:.45rem 1.1rem;border-radius:999px;font-family:var(--display);font-size:.82rem;cursor:pointer;transition:all .2s}
+.studio-tank-btn:hover{background:var(--cyan);color:var(--bg)}
+#studio-tank-canvas{width:100%;height:340px;display:block;cursor:pointer}
+.studio-shots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem;margin-top:2.4rem}
+.studio-shot{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel);transition:transform .3s var(--ease),border-color .3s}
+.studio-shot:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.studio-shot img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.studio-shot div{padding:.85rem 1rem}
+.studio-shot b{display:block;font-family:var(--display);font-size:.98rem;margin-bottom:.2rem}
+.studio-shot span{font-size:.82rem;color:var(--mute)}
+.fighters-marquee{display:flex;gap:1.2rem;overflow-x:auto;padding:1rem 0;margin-top:2rem;scrollbar-width:thin}
+.fighter-chip{flex:0 0 175px;border:1px solid var(--line);border-radius:18px;padding:.9rem;background:var(--panel);text-align:center;transition:transform .25s,border-color .25s}
+.fighter-chip:hover{transform:translateY(-4px);border-color:var(--violet)}
+.fighter-chip img{width:100%;height:110px;object-fit:contain;margin-bottom:.5rem;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5))}
+.fighter-chip b{display:block;font-family:var(--display);font-size:.95rem}
+.fighter-chip span{font-size:.75rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.08em}
+
 </style>
 </head>
 <body>
@@ -270,6 +294,7 @@ html.js [data-reveal]{opacity:0;transform:translateY(28px)}
     <span>Womp&nbsp;Studio</span>
   </a>
   <nav class="nav" aria-label="Main">
+    <a href="./index.html" style="color:var(--cyan);font-weight:700">🌊 Play Expedition</a>
     <a href="#studio">Studio</a>
     <a href="#game">Game</a>
     <a href="#capabilities">Capabilities</a>
@@ -288,7 +313,8 @@ html.js [data-reveal]{opacity:0;transform:translateY(28px)}
   <h1><span class="split">We make play feel alive.</span></h1>
   <p class="lede">Womp Studio builds <b>deeply-systemic mobile games</b> that respect your time and your phone — led by our flagship, <b>Fish Aquarium</b>.</p>
   <div class="cta-row">
-    <a href="#game" class="btn btn-solid">See the game</a>
+    <a href="./index.html" class="btn btn-solid">Launch Scroll Expedition ↗</a>
+    <a href="#game" class="btn btn-ghost">See the game</a>
     <a href="#contact" class="btn btn-ghost">Work with us</a>
   </div>
   <div class="scroll-cue">Scroll
@@ -325,18 +351,21 @@ html.js [data-reveal]{opacity:0;transform:translateY(28px)}
   <div class="modes">
     <article class="mode tilt" data-hue="c" data-reveal>
       <span class="orb" aria-hidden="true"></span>
+      <img class="mode-thumb" src="img/shot-defense.webp" alt="Defense Run gameplay" loading="lazy">
       <p class="num">01</p><p class="tag">Defense Run</p>
       <h3>Guard the reef</h3>
       <p>Endless waves around a Guardian Tower. Start with $500 and your deck; a boss every fifth wave. 64 species, each with one timed skill — damage, stun, venom, nova, slow, shield, feed, gold.</p>
     </article>
     <article class="mode tilt" data-hue="v" data-reveal>
       <span class="orb" aria-hidden="true"></span>
+      <img class="mode-thumb" src="img/shot-boss.webp" alt="Pleco Rampage boss battle" loading="lazy">
       <p class="num">02</p><p class="tag">Pleco Rampage</p>
       <h3>One pleco, many guns</h3>
       <p>The fighter layer inside the run: a gun-carrying, skin-collecting pleco climbing an ascension wall. Feed-and-grow underneath — elders pay back 1.8×, every meal compounds.</p>
     </article>
     <article class="mode tilt" data-hue="m" data-reveal>
       <span class="orb" aria-hidden="true"></span>
+      <img class="mode-thumb" src="img/shot-feeding.webp" alt="Aquarium Sanctuary feeding gameplay" loading="lazy">
       <p class="num">03</p><p class="tag">Aquarium Sanctuary</p>
       <h3>An idle estate</h3>
       <p>A full-screen, borderless aquarium business: grow the collection, tend the estate, earn while the tank runs itself. One save links all three surfaces.</p>
@@ -535,6 +564,74 @@ html.js [data-reveal]{opacity:0;transform:translateY(28px)}
     links.forEach(function (a) { a.setAttribute('aria-current', a.getAttribute('href') === '#' + cur ? 'true' : 'false'); });
   }
   window.addEventListener('scroll', spy, { passive: true }); spy();
+
+  // Interactive Coral Sanctuary Tank (14 animated species from img/manifest.json)
+  (function () {
+    var tc = document.getElementById('studio-tank-canvas');
+    if (!tc || !tc.getContext) return;
+    var ctx = tc.getContext('2d');
+    var bg = new Image(); bg.src = 'img/backdrop-coral-sm.webp';
+    var fishes = [], pellets = [];
+    fetch('img/manifest.json').then(function(r){return r.json();}).then(function(list){
+      list.forEach(function(item, i){
+        var im = new Image(); im.src = item.file;
+        fishes.push({
+          d: item, im: im,
+          x: 80 + (i * 75) % 960,
+          y: 55 + (i * 47) % 230,
+          vx: (i % 2 ? 1 : -1) * (item.speed || 60) * 0.55,
+          vy: Math.sin(i) * 10,
+          w: Math.max(46, Math.min(108, (item.radius || 15) * 4.2)),
+          ph: i * 1.2
+        });
+      });
+    }).catch(function(){});
+    function feed(x, y) {
+      for (var i = 0; i < 6; i++) pellets.push({ x: x + (Math.random() - 0.5) * 80, y: y + (Math.random() - 0.5) * 24 });
+    }
+    tc.addEventListener('click', function(e){
+      var r = tc.getBoundingClientRect();
+      feed((e.clientX - r.left) * (tc.width / Math.max(1, r.width)), (e.clientY - r.top) * (tc.height / Math.max(1, r.height)));
+    });
+    var fb = document.getElementById('studio-feed-btn');
+    if (fb) fb.addEventListener('click', function(){ feed(tc.width * 0.5, 50); });
+    var last = performance.now();
+    function loop(now) {
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      var sec = now / 1000, w = tc.width, h = tc.height;
+      if (bg.complete && bg.naturalWidth) ctx.drawImage(bg, 0, 0, w, h);
+      else { ctx.fillStyle = '#072a3e'; ctx.fillRect(0, 0, w, h); }
+      for (var p = pellets.length - 1; p >= 0; p--) {
+        pellets[p].y += 26 * dt;
+        if (pellets[p].y > h - 16) { pellets.splice(p, 1); continue; }
+        ctx.fillStyle = '#ffb454'; ctx.beginPath(); ctx.arc(pellets[p].x, pellets[p].y, 4, 0, Math.PI * 2); ctx.fill();
+      }
+      for (var i = 0; i < fishes.length; i++) {
+        var f = fishes[i];
+        if (!f.im.complete || !f.im.naturalWidth) continue;
+        if (pellets.length) {
+          var dx = pellets[0].x - f.x, dy = pellets[0].y - f.y, dist = Math.hypot(dx, dy);
+          if (dist < 22) pellets.shift();
+          else if (dist < 300) { f.vx += (dx / dist) * 160 * dt; f.vy += (dy / dist) * 160 * dt; }
+        }
+        var maxS = (f.d.speed || 65) * 1.1, cs = Math.hypot(f.vx, f.vy);
+        if (cs > maxS) { f.vx = f.vx / cs * maxS; f.vy = f.vy / cs * maxS; }
+        f.x += f.vx * dt; f.y += f.vy * dt + Math.sin(sec * 2 + f.ph) * 9 * dt;
+        if (f.x < 40) { f.x = 40; f.vx = Math.abs(f.vx); }
+        if (f.x > w - 40) { f.x = w - 40; f.vx = -Math.abs(f.vx); }
+        if (f.y < 40) { f.y = 40; f.vy = Math.abs(f.vy) * 0.5; }
+        if (f.y > h - 40) { f.y = h - 40; f.vy = -Math.abs(f.vy) * 0.5; }
+        var frames = f.d.frames || 3, fw = f.im.width / frames, fh = f.im.height, dw = f.w, dh = dw * fh / fw;
+        var fi = Math.floor(sec * (f.d.fps || 5) + f.ph) % frames;
+        ctx.save(); ctx.translate(f.x, f.y); if (f.vx < 0) ctx.scale(-1, 1);
+        ctx.drawImage(f.im, fi * fw, 0, fw, fh, -dw / 2, -dh / 2, dw, dh);
+        ctx.restore();
+      }
+      if (!reduce) requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
+
 })();
 </script>
 </body>

@@ -621,7 +621,7 @@
 
     // Orbiting wireframe rings
     var ringColors = [0x7c5cff, 0x37e6d5, 0xff5c8a];
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 0; i++) {
       var r = new THREE.Mesh(new THREE.TorusGeometry(2.7 + i * 0.75, 0.012, 8, 140),
         new THREE.MeshBasicMaterial({ color: ringColors[i], transparent: true, opacity: 0.5 }));
       r.rotation.x = Math.PI / 2 + (i - 1) * 0.5; r.rotation.y = i * 0.6;
@@ -631,7 +631,7 @@
     // Floating accent shapes
     var ag = [new THREE.OctahedronGeometry(0.3), new THREE.TorusKnotGeometry(0.22, 0.07, 64, 8), new THREE.IcosahedronGeometry(0.3)];
     var ac = [0x37e6d5, 0xffb454, 0xff5c8a];
-    for (var a = 0; a < 3; a++) {
+    for (var a = 0; a < 0; a++) {
       var am = new THREE.Mesh(ag[a], new THREE.MeshStandardMaterial({ color: ac[a], metalness: 0.6, roughness: 0.3, emissive: ac[a], emissiveIntensity: 0.3, flatShading: true }));
       am.userData = { ang: (a / 3) * Math.PI * 2, rad: 3.7, sp: 0.22 + a * 0.08, yb: rand(-0.6, 0.6) };
       group.add(am); accents.push(am);
@@ -639,58 +639,7 @@
 
     // Floating 3D props â€” everyday objects drifting in the field
     propGroup = new THREE.Group(); scene.add(propGroup);
-    var propDefs = [
-      { f: makeRocket, x: -5.0, y: 2.0, z: -3, s: 1.1 },
-      { f: makeDumbbell, x: 5.2, y: -1.8, z: -2, s: 1.0 },
-      { f: makeRemote, x: -5.6, y: -1.6, z: -4, s: 1.0 },
-      { f: makeGamepad, x: 5.6, y: 2.2, z: -3.5, s: 1.0 },
-      { f: makeStar, x: 0.6, y: 3.0, z: -5, s: 1.1 },
-      { f: makeCoin, x: -3.4, y: -2.8, z: -2.5, s: 1.0 },
-      { f: makePlanet, x: 3.8, y: 3.2, z: -4.5, s: 1.0 },
-      { f: makeHeart, x: 6.4, y: 0.2, z: -5, s: 1.0 },
-      { f: makeFish, x: -6.8, y: 0.8, z: -4, s: 1.2 },
-      { f: makeGem, x: 4.5, y: -2.5, z: -3, s: 1.0 },
-      { f: makeChest, x: -2.5, y: -3.2, z: -3.5, s: 1.1 },
-      { f: makeAnchor, x: 6.8, y: -0.8, z: -4.5, s: 1.0 },
-      { f: makeShell, x: -4.2, y: 2.8, z: -3.5, s: 0.9 },
-      { f: makeCrystal, x: 2.8, y: -3.0, z: -4, s: 1.1 },
-      { f: makeCoral, x: -6.2, y: -2.2, z: -3, s: 1.0 },
-      { f: makeBubble, x: 1.5, y: 3.5, z: -5, s: 0.8 },
-      { f: makeBubble, x: -1.8, y: -3.5, z: -4.5, s: 0.7 },
-      { f: makeFish, x: 7.2, y: 1.5, z: -5, s: 0.9 },
-      { f: makeDice, x: 5.9, y: 1.1, z: -3.2, s: 1.0 },
-      { f: makeTrophy, x: -7.2, y: -0.4, z: -4.4, s: 1.1 },
-      { f: makeCrown, x: 0.4, y: -3.8, z: -5, s: 1.0 },
-      { f: makeJoystick, x: -4.8, y: 3.4, z: -4.8, s: 1.0 },
-      { f: makeBomb, x: 6.6, y: -2.6, z: -4.2, s: 1.0 },
-      { f: makeUfo, x: -2.2, y: 3.6, z: -5.5, s: 1.1 },
-      { f: makeGhost, x: 3.4, y: 1.6, z: -6, s: 1.0 },
-      { f: makeLightning, x: -6.6, y: 1.8, z: -3.6, s: 1.0 },
-      { f: makeHourglass, x: 2.2, y: -2.4, z: -3.4, s: 0.9 },
-      { f: makeBalloon, x: -3.8, y: -1.2, z: -5.5, s: 1.0 },
-      { f: makeBalloon, x: 4.8, y: 0.4, z: -5.8, s: 0.8 },
-      { f: makeBee, x: -1.2, y: 2.6, z: -3.8, s: 1.0 },
-      { f: makeBee, x: 1.8, y: -1.8, z: -2.8, s: 0.85 },
-      { f: makeBoat, x: -5.4, y: -2.6, z: -5.2, s: 1.0 },
-      { f: makeSubmarine, x: 6.4, y: 2.6, z: -5, s: 1.0 },
-      { f: makeDuck, x: -6.4, y: 2.6, z: -5.6, s: 1.0 },
-      { f: makeJelly2, x: 7.6, y: -0.6, z: -5.4, s: 1.0 },
-      { f: makeJelly2, x: -7.4, y: 0.6, z: -5.8, s: 0.8 },
-      { f: makeBeachBall, x: 7.8, y: -2.0, z: -4.6, s: 1.0 },
-      { f: makeHook, x: -7.6, y: -1.6, z: -4.8, s: 1.0 },
-      { f: makeLighthouse, x: -4.5, y: 3.8, z: -6.2, s: 0.9 },
-      { f: makeCupcake, x: 5.8, y: -3.2, z: -5.8, s: 1.0 },
-      { f: makeCamera, x: -7.8, y: -2.4, z: -5.2, s: 0.9 },
-      { f: makeGlobe, x: 3.2, y: 4.0, z: -6.5, s: 0.9 },
-      { f: makeCompass, x: -2.8, y: -4.2, z: -4.8, s: 1.0 },
-      { f: makeTelescope, x: 7.0, y: 0.8, z: -6.8, s: 0.85 },
-      { f: makePotion, x: -6.0, y: 1.4, z: -6.4, s: 0.95 },
-      { f: makeMushroom, x: 4.2, y: -3.8, z: -5.6, s: 1.0 },
-      { f: makeVinyl, x: -3.2, y: 4.2, z: -6.0, s: 0.8 },
-      { f: makeIceCream, x: 6.2, y: 3.4, z: -6.6, s: 0.9 },
-      { f: makeCrystal2, x: -5.8, y: -3.6, z: -5.8, s: 1.0 },
-      { f: makeWindmill, x: 2.0, y: 4.5, z: -7.0, s: 0.85 }
-    ];
+    var propDefs = [];
     for (var pd = 0; pd < propDefs.length; pd++) {
       var def = propDefs[pd], obj = def.f();
       obj.position.set(def.x, def.y, def.z);
@@ -702,7 +651,7 @@
     // Satellites â€” small shapes on tilted orbits around the blob.
     var satGeo = [new THREE.OctahedronGeometry(0.14), new THREE.TetrahedronGeometry(0.16), new THREE.BoxGeometry(0.18, 0.18, 0.18), new THREE.TorusGeometry(0.12, 0.04, 8, 20)];
     var satCols = [0x37e6d5, 0xffb454, 0xff5c8a, 0x7c5cff];
-    for (var st = 0; st < 6; st++) {
+    for (var st = 0; st < 0; st++) {
       var sm = new THREE.Mesh(satGeo[st % satGeo.length], new THREE.MeshStandardMaterial({ color: satCols[st % satCols.length], emissive: satCols[st % satCols.length], emissiveIntensity: 0.5, metalness: 0.5, roughness: 0.3, flatShading: true }));
       sm.userData = { ang: (st / 6) * Math.PI * 2, rad: 3.2 + (st % 3) * 0.5, sp: 0.5 + st * 0.07, tilt: 0.5 + st * 0.32, ph: rand(0, 6.28) };
       group.add(sm); satellites.push(sm);
@@ -712,7 +661,7 @@
     grid = new THREE.GridHelper(60, 60, 0x7c5cff, 0x23284a);
     grid.position.y = -7;
     grid.material.transparent = true; grid.material.opacity = 0.14; grid.material.depthWrite = false;
-    scene.add(grid);
+    // grid removed
 
     // Shooting stars â€” streak sprites that periodically slash across the field.
     var streakTex = texStreak();
