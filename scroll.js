@@ -177,6 +177,35 @@
       });
     }
 
+    // Auto-scroll loop for studio.html (gentle and smooth)
+    if (!reduce) {
+      var studioAutoScroll = true;
+      var studioPauseTimer = 0;
+      function pauseStudioAuto() {
+        studioAutoScroll = false;
+        clearTimeout(studioPauseTimer);
+        studioPauseTimer = setTimeout(function () { studioAutoScroll = true; }, 3000);
+      }
+      window.addEventListener('wheel', pauseStudioAuto, { passive: true });
+      window.addEventListener('touchstart', pauseStudioAuto, { passive: true });
+      window.addEventListener('keydown', pauseStudioAuto, { passive: true });
+      function stepStudioScroll() {
+        if (studioAutoScroll) {
+          var max = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight - 10;
+          if (window.scrollY < max) {
+            window.scrollBy(0, 0.8);
+          } else if (!window._studioLoopTimer) {
+            window._studioLoopTimer = setTimeout(function () {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              window._studioLoopTimer = 0;
+            }, 3000);
+          }
+        }
+        requestAnimationFrame(stepStudioScroll);
+      }
+      requestAnimationFrame(stepStudioScroll);
+    }
+
     // Refresh after fonts + full load; debounced resize.
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });

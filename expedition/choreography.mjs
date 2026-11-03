@@ -67,7 +67,7 @@ export function actorPose(time,chapter,index,width,height,weapon=0){
  const charge=smooth((inbound-.65)/.35);
  return {x,y,index,boss,visible:age>0&&(!boss||entrance>.12),alpha:boss?entrance:Math.min(1,age*3),
  rotation:Math.sin(phase)*.05,facing:outbound>.12&&grapple<.5?1:-1, radius:Math.min(width*(boss?.068:.04),boss?85:48),
- width:Math.min(width*(boss?.255:.115),boss?350:160),frame:charge>.6?2:Math.floor(time*5+index)%2,charge};
+ width:Math.min(width*(boss?.255:.115),boss?350:160),frame:charge>.6?2:Math.floor(time*2.5+index)%2,charge};
 }
 export function companionPose(time,chapter,index,width,height){
  const hero=heroPose(time,chapter,width,height);

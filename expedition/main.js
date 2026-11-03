@@ -24,7 +24,17 @@ const labels=['The surface','Coral Gardens','Galleon Graveyard','Crystal Caverns
 const guns=['Snapper Pistol','Kraken Shotgun','Reef Minigun','Narwhal Rail','Clam Cannon'];
 const squadSkins=['cleaner','golden_pleco'];
 let sky=null,width=innerWidth,height=innerHeight,dpr=1,images=null,raf=0,backgrounds=[],last=0,chapterBounds=[];
-let cardFoilX=0,cardFoilY=0,autoDive=false,soundEnabled=false,audioCtx=null,lastSoundShotTime=-1;
+let cardFoilX=0,cardFoilY=0,autoDive=true,soundEnabled=false,audioCtx=null,lastSoundShotTime=-1;
+let userInteractTimer=0,userInteracting=false,diveLoopTimer=0;
+function pauseAutoDive(){
+ if(!autoDive)return;
+ userInteracting=true;
+ clearTimeout(userInteractTimer);
+ userInteractTimer=setTimeout(()=>{
+  userInteracting=false;
+  if(autoDive)request();
+ },3000);
+}
 
 const dots=Array.from({length:42},(_,i)=>({
  x:((i*73+19)%101)/101,
@@ -198,10 +208,18 @@ function heroRing(age,index){return Math.max(.05,age*1.4-index*.14);}
 function scrollProgress(){if(chapterBounds.length!==6)return scrollY/Math.max(1,document.documentElement.scrollHeight-height);let index=0;for(let i=1;i<6;i++)if(scrollY>=chapterBounds[i].top)index=i;const start=chapterBounds[index].top,end=index<5?chapterBounds[index+1].top:start+chapterBounds[index].height;return Math.min(1,(index+Math.max(0,Math.min(1,(scrollY-start)/Math.max(1,end-start))))/6);}
 
 function frame(t){raf=0;if(document.hidden)return;
- if(autoDive&&!reduced&&chapterBounds.length===6){
-  const maxScroll=chapterBounds[5].top+chapterBounds[5].height-height*.5;
-  if(scrollY<maxScroll){window.scrollBy?.(0,2.8);}
-  else{autoDive=false;const btn=node('auto-dive-btn');if(btn)btn.setAttribute('aria-pressed','false');}
+ if(autoDive&&!userInteracting&&!reduced&&chapterBounds.length===6){
+  const docHeight=(document.documentElement?.scrollHeight||document.body?.scrollHeight||0);
+  const maxScroll=Math.max(chapterBounds[5].top+chapterBounds[5].height,docHeight-height-20);
+  if(scrollY<maxScroll){window.scrollBy?.(0,1.0);}
+  else{
+   if(!diveLoopTimer){
+    diveLoopTimer=setTimeout(()=>{
+     window.scrollTo?.({top:0,behavior:'smooth'});
+     diveLoopTimer=0;
+    },3000);
+   }
+  }
  }
  scrollDriver.target(scrollProgress(),{immediate:reduced||immediateSeek||directInput});immediateSeek=false;
  const s=sample(scrollDriver.step(t));updateIntro(s);updateStory(s);
@@ -237,7 +255,7 @@ function frame(t){raf=0;if(document.hidden)return;
   if(s.gunfire&&combat.flash>.07&&Math.abs(s.combatTime-lastSoundShotTime)>.12){lastSoundShotTime=s.combatTime;playSynthSfx('shot',s.weapon);}
   // Small authentic fish schools establish depth behind the combat lane.
   ctx.save();if(s.chapter===0){ctx.beginPath();ctx.rect(0,Math.max(0,waterLevel(s.local,0)*height),width,height);ctx.clip();}
-  if(images.ambientFish)for(let i=0;i<9;i++){const fish=schoolPose(s.progress*84,i,width,height),descriptor=images.ambientFish[i%images.ambientFish.length];ctx.globalAlpha=.28+(i%3)*.12;stripSprite(descriptor,fish.x,fish.y,fish.width,Math.floor(sceneTime*descriptor.fps+i)%descriptor.frames,0,fish.flip);}ctx.restore();ctx.globalAlpha=1;
+  if(images.ambientFish)for(let i=0;i<9;i++){const fish=schoolPose(s.progress*84,i,width,height),descriptor=images.ambientFish[i%images.ambientFish.length];ctx.globalAlpha=.28+(i%3)*.12;stripSprite(descriptor,fish.x,fish.y,fish.width,Math.floor(sceneTime*(descriptor.fps*0.4)+i)%descriptor.frames,0,fish.flip);}ctx.restore();ctx.globalAlpha=1;
   for(const target of combat.targets){
     if(!s.combatReady)continue;
     if(!target.visible)continue;
@@ -318,10 +336,10 @@ function frame(t){raf=0;if(document.hidden)return;
 function request(){if(!raf)raf=requestAnimationFrame(frame);}
 function direction(value){document.body.dataset.scrollDirection=value;const readout=node('scroll-direction');if(readout)readout.textContent=value==='rewind'?'Rewinding':value==='advance'?'Advancing':'Paused';}
 addEventListener('scroll',()=>{const delta=scrollY-previousScroll;previousScroll=scrollY;direction(delta<0?'rewind':'advance');clearTimeout(pauseTimer);pauseTimer=setTimeout(()=>{pauseTimer=0;directInput=false;if(scrollDriver.settled)direction('paused');},160);request();},{passive:true});
-const scrubber=node('combat-scrubber');if(scrubber)scrubber.addEventListener('input',()=>{autoDive=false;immediateSeek=true;directInput=true;const phase=Math.min(5.999999,Number(scrubber.value)/1000*6),index=Math.floor(phase),local=phase-index;const bounds=chapterBounds[index];if(bounds)window.scrollTo({top:bounds.top+local*bounds.height,behavior:'instant'});request();});
-addEventListener('keydown',event=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)){autoDive=false;directInput=true;}});
-addEventListener('wheel',()=>{autoDive=false;const btn=node('auto-dive-btn');if(btn)btn.setAttribute('aria-pressed','false');directInput=false;},{passive:true});
-addEventListener('touchstart',()=>{autoDive=false;directInput=false;},{passive:true});
+const scrubber=node('combat-scrubber');if(scrubber)scrubber.addEventListener('input',()=>{immediateSeek=true;directInput=true;pauseAutoDive();const phase=Math.min(5.999999,Number(scrubber.value)/1000*6),index=Math.floor(phase),local=phase-index;const bounds=chapterBounds[index];if(bounds)window.scrollTo({top:bounds.top+local*bounds.height,behavior:'instant'});request();});
+addEventListener('keydown',event=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)){directInput=true;pauseAutoDive();}});
+addEventListener('wheel',()=>{directInput=false;pauseAutoDive();},{passive:true});
+addEventListener('touchstart',()=>{directInput=false;pauseAutoDive();},{passive:true});
 document.addEventListener('click',event=>{if(event.target?.closest?.('a[href^="#"]'))directInput=true;});
 addEventListener('resize',resize,{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else request();});
 
@@ -329,8 +347,12 @@ addEventListener('resize',resize,{passive:true});document.addEventListener('visi
 function bootInteractiveShowcase(){
  const autoBtn=node('auto-dive-btn');
  if(autoBtn?.addEventListener){
+  autoBtn.setAttribute('aria-pressed',String(autoDive));
+  const lbl=node('auto-dive-label');
+  if(lbl)lbl.textContent=autoDive?'Cruising...':'Auto-Dive';
   autoBtn.addEventListener('click',()=>{
    autoDive=!autoDive;
+   userInteracting=false;
    autoBtn.setAttribute('aria-pressed',String(autoDive));
    const lbl=node('auto-dive-label');
    if(lbl)lbl.textContent=autoDive?'Cruising...':'Auto-Dive';
@@ -517,12 +539,12 @@ function bootCodexCanvases(){
      for(const en of enc.enemies||[]){
       if(!seenIds.has(en.id)&&en.image){
        seenIds.add(en.id);
-       allCreatures.push({id:en.id,name:en.name,image:en.image,frames:en.frames||4,fps:7,kind:'enemy',role:'Hostile Raider'});
+       allCreatures.push({id:en.id,name:en.name,image:en.image,frames:en.frames||4,fps:3.5,kind:'enemy',role:'Hostile Raider'});
       }
      }
      if(enc.boss&&!seenIds.has(enc.boss.id)&&enc.boss.image){
       seenIds.add(enc.boss.id);
-      allCreatures.push({id:enc.boss.id,name:enc.boss.name,image:enc.boss.image,frames:enc.boss.frames||4,fps:6,kind:'boss',role:'Abyssal Boss'});
+      allCreatures.push({id:enc.boss.id,name:enc.boss.name,image:enc.boss.image,frames:enc.boss.frames||4,fps:3,kind:'boss',role:'Abyssal Boss'});
      }
     }
    }
@@ -596,7 +618,7 @@ function bootCodexCanvases(){
     if(firstBoss?.image){
      const fw=firstBoss.image.width/(firstBoss.frames||4),bh=110*firstBoss.image.height/fw;
      actx.save();actx.translate(dummyX,dummyY);actx.scale(-1,1);
-     actx.drawImage(firstBoss.image,(Math.floor(sec*6)%4)*fw,0,fw,firstBoss.image.height,-55,-bh/2,110,bh);
+     actx.drawImage(firstBoss.image,(Math.floor(sec*3)%4)*fw,0,fw,firstBoss.image.height,-55,-bh/2,110,bh);
      actx.restore();
     }
     if(armoryMode==='fire'){
@@ -607,7 +629,7 @@ function bootCodexCanvases(){
     const meleeKey=images.meleeAnimations?.[armorySkin]?armorySkin:'cleaner';
     const mSheet=images.meleeAnimations?.[meleeKey]?.[armoryMode];
     if((armoryMode==='bite'||armoryMode==='punch')&&mSheet?.image){
-     const fIdx=Math.floor(sec*10)%mSheet.frames;
+     const fIdx=Math.floor(sec*5)%mSheet.frames;
      const fw=mSheet.image.width/mSheet.frames, dw=250*mSheet.unitScale, dh=dw*mSheet.image.height/fw;
      actx.save();actx.translate(w*.38,h*.52);
      actx.drawImage(mSheet.image,fIdx*fw,0,fw,mSheet.image.height,-dw/2,-dh/2,dw,dh);
@@ -665,24 +687,24 @@ function bootCodexCanvases(){
      if(f.y>sh-45){f.y=sh-45;f.vy=-Math.abs(f.vy)*.5;}
      const im=f.descriptor.image,frames=f.descriptor.frames||3,fw=im.width/frames,fh=im.height;
      const dw=f.w,dh=dw*fh/fw;
-     const frameIdx=Math.floor(sec*(f.descriptor.fps||5)+f.phase)%frames;
+     const frameIdx=Math.floor(sec*((f.descriptor.fps||5)*0.4)+f.phase)%frames;
      sctx.save();
      sctx.translate(f.x,f.y);
      if(f.vx<0)sctx.scale(-1,1);
      sctx.drawImage(im,frameIdx*fw,0,fw,fh,-dw/2,-dh/2,dw,dh);
      sctx.restore();
-    }
-   }
+     }
+     }
 
-   // C) Paint Bestiary Sprite Cards
-   for(const item of creatureCanvases){
-    if(item.card.hidden||!item.ctx)continue;
-    const cctx=item.ctx,cw=item.canvas.width,ch=item.canvas.height,cr=item.cr,im=cr.image;
-    cctx.clearRect(0,0,cw,ch);
-    const frames=cr.frames||4,fw=im.width/frames,fh=im.height;
-    const scale=Math.min((cw-16)/fw,(ch-12)/fh);
-    const dw=fw*scale,dh=fh*scale;
-    const fIdx=Math.floor(sec*(cr.fps||6))%frames;
+     // C) Paint Bestiary Sprite Cards
+     for(const item of creatureCanvases){
+     if(item.card.hidden||!item.ctx)continue;
+     const cctx=item.ctx,cw=item.canvas.width,ch=item.canvas.height,cr=item.cr,im=cr.image;
+     cctx.clearRect(0,0,cw,ch);
+     const frames=cr.frames||4,fw=im.width/frames,fh=im.height;
+     const scale=Math.min((cw-16)/fw,(ch-12)/fh);
+     const dw=fw*scale,dh=fh*scale;
+     const fIdx=Math.floor(sec*((cr.fps||6)*0.4))%frames;
     cctx.save();
     cctx.translate(cw/2,ch/2+Math.sin(sec*2.5)*3);
     cctx.drawImage(im,fIdx*fw,0,fw,fh,-dw/2,-dh/2,dw,dh);
