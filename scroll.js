@@ -177,34 +177,17 @@
       });
     }
 
-    // Always-automatic bounded scroll loop for studio.html
+    // Smooth scroll loop for studio.html
     if (!reduce) {
-      var studioVelocity = 0;
-      window.addEventListener('wheel', function (e) {
-        if (typeof e.preventDefault === 'function') e.preventDefault();
-        var delta = Math.sign(e.deltaY) * Math.min(Math.abs(e.deltaY) * 0.035, 1.4);
-        studioVelocity = Math.max(-0.9, Math.min(1.4, studioVelocity + delta));
-      }, { passive: false });
-      window.addEventListener('keydown', function (e) {
-        if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
-          if (typeof e.preventDefault === 'function') e.preventDefault();
-          studioVelocity = Math.min(1.4, studioVelocity + 0.8);
-        } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
-          if (typeof e.preventDefault === 'function') e.preventDefault();
-          studioVelocity = Math.max(-0.9, studioVelocity - 0.8);
-        }
-      });
+      var studioAutoScroll = false;
+      window.addEventListener('wheel', function () { studioAutoScroll = false; }, { passive: true });
+      window.addEventListener('touchstart', function () { studioAutoScroll = false; }, { passive: true });
       function stepStudioScroll() {
-        studioVelocity *= 0.92;
-        var totalSpeed = Math.max(1.6, Math.min(4.8, 2.8 + studioVelocity));
-        var max = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight - 10;
-        if (window.scrollY < max) {
-          window.scrollBy(0, totalSpeed);
-        } else if (!window._studioLoopTimer) {
-          window._studioLoopTimer = setTimeout(function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            window._studioLoopTimer = 0;
-          }, 2500);
+        if (studioAutoScroll) {
+          var max = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight - 10;
+          if (window.scrollY < max) {
+            window.scrollBy(0, 2.0);
+          }
         }
         requestAnimationFrame(stepStudioScroll);
       }

@@ -5,6 +5,7 @@ import {drawProjectile,weaponIds,profiles,createVolley,stepProjectile} from './p
 import {loadRig} from './rig/rig-hero.mjs';
 import {heroPose,companionPose,schoolPose,combatToSceneTime} from './choreography.mjs';
 import {createScrollDriver} from './scroll-driver.mjs';
+import {createArcadeGame} from './arcade-game.mjs';
 
 const combat=createCombat();
 let rig=null,previousScroll=scrollY,pauseTimer=0;
@@ -24,8 +25,8 @@ const labels=['The surface','Coral Gardens','Galleon Graveyard','Crystal Caverns
 const guns=['Snapper Pistol','Kraken Shotgun','Reef Minigun','Narwhal Rail','Clam Cannon'];
 const squadSkins=['cleaner','golden_pleco'];
 let sky=null,width=innerWidth,height=innerHeight,dpr=1,images=null,raf=0,backgrounds=[],last=0,chapterBounds=[];
-let cardFoilX=0,cardFoilY=0,autoDive=true,soundEnabled=false,audioCtx=null,lastSoundShotTime=-1;
-let diveLoopTimer=0,userScrollVelocity=0,touchStartY=0,touchActive=false,touchResumeTimer=0;
+let cardFoilX=0,cardFoilY=0,autoDive=false,soundEnabled=false,audioCtx=null,lastSoundShotTime=-1;
+let diveLoopTimer=0,touchStartY=0,touchActive=false,touchResumeTimer=0,arcadeGameInstance=null;
 
 const dots=Array.from({length:42},(_,i)=>({
  x:((i*73+19)%101)/101,
@@ -200,8 +201,7 @@ function scrollProgress(){if(chapterBounds.length!==6)return scrollY/Math.max(1,
 
 function frame(t){raf=0;if(document.hidden)return;
  if(autoDive&&!touchActive&&!reduced&&chapterBounds.length===6){
-  userScrollVelocity*=0.92;
-  const currentSpeed=Math.max(1.8,Math.min(5.5,3.2+userScrollVelocity));
+  const currentSpeed=2.2;
   const docHeight=(document.documentElement?.scrollHeight||document.body?.scrollHeight||0);
   const maxScroll=Math.max(chapterBounds[5].top+chapterBounds[5].height,docHeight-height-20);
   if(scrollY<maxScroll){window.scrollBy?.(0,currentSpeed);}
@@ -328,50 +328,107 @@ function request(){if(!raf)raf=requestAnimationFrame(frame);}
 function direction(value){document.body.dataset.scrollDirection=value;const readout=node('scroll-direction');if(readout)readout.textContent=value==='rewind'?'Rewinding':value==='advance'?'Advancing':'Paused';}
 addEventListener('scroll',()=>{const delta=scrollY-previousScroll;previousScroll=scrollY;direction(delta<0?'rewind':'advance');clearTimeout(pauseTimer);pauseTimer=setTimeout(()=>{pauseTimer=0;directInput=false;if(scrollDriver.settled)direction('paused');},160);request();},{passive:true});
 const scrubber=node('combat-scrubber');if(scrubber)scrubber.addEventListener('input',()=>{immediateSeek=true;directInput=true;const phase=Math.min(5.999999,Number(scrubber.value)/1000*6),index=Math.floor(phase),local=phase-index;const bounds=chapterBounds[index];if(bounds)window.scrollTo({top:bounds.top+local*bounds.height,behavior:'instant'});request();});
-addEventListener('keydown',event=>{
- if(['ArrowDown','PageDown',' '].includes(event.key)){
-  event.preventDefault?.();
-  userScrollVelocity=Math.min(1.4,userScrollVelocity+0.8);
-  request();
- }else if(['ArrowUp','PageUp'].includes(event.key)){
-  event.preventDefault?.();
-  userScrollVelocity=Math.max(-0.9,userScrollVelocity-0.8);
-  request();
+
+// User scroll interaction smoothly pauses auto-cruise so website never fights the user
+addEventListener('wheel',()=>{
+ if(autoDive){
+  autoDive=false;
+  updateCruiseUI();
  }
-});
-addEventListener('wheel',event=>{
- event.preventDefault?.();
- const delta=Math.sign(event.deltaY)*Math.min(Math.abs(event.deltaY)*0.035,1.4);
- userScrollVelocity=Math.max(-0.9,Math.min(1.4,userScrollVelocity+delta));
- request();
-},{passive:false});
+},{passive:true});
 addEventListener('touchstart',event=>{
+ if(autoDive){
+  autoDive=false;
+  updateCruiseUI();
+ }
  touchActive=true;
  clearTimeout(touchResumeTimer);
  if(event.touches&&event.touches.length>0)touchStartY=event.touches[0].clientY;
-},{passive:true});
-addEventListener('touchmove',event=>{
- if(event.touches&&event.touches.length>0){
-  const dy=touchStartY-event.touches[0].clientY;
-  touchStartY=event.touches[0].clientY;
-  const delta=Math.sign(dy)*Math.min(Math.abs(dy)*0.04,1.4);
-  userScrollVelocity=Math.max(-0.9,Math.min(1.4,userScrollVelocity+delta));
-  request();
- }
 },{passive:true});
 addEventListener('touchend',()=>{
  touchActive=false;
  clearTimeout(touchResumeTimer);
  touchResumeTimer=setTimeout(()=>{if(autoDive)request();},1000);
 },{passive:true});
-addEventListener('touchcancel',()=>{
- touchActive=false;
-},{passive:true});
-document.addEventListener('click',event=>{if(event.target?.closest?.('a[href^="#"]'))directInput=true;});
+addEventListener('touchcancel',()=>{touchActive=false;},{passive:true});
+
+// Smooth navigation for all anchor links
+try{
+ document.querySelectorAll('a[href^="#"]')?.forEach?.(link=>{
+  link?.addEventListener?.('click',e=>{
+   const href=link?.getAttribute?.('href');
+   if(!href||href==='#')return;
+   const target=document.querySelector?.(href);
+   if(target){
+    e?.preventDefault?.();
+    autoDive=false;
+    updateCruiseUI();
+    closeMobileDrawer();
+    target?.scrollIntoView?.({behavior:'smooth'});
+   }
+  });
+ });
+}catch(_){}
+
 addEventListener('resize',resize,{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else request();});
+
+function updateCruiseUI(){
+ const autoBtn=node('auto-dive-btn');
+ const drawerBtn=node('drawer-cruise-btn');
+ const lbl=node('auto-dive-label');
+ if(autoBtn)autoBtn.setAttribute('aria-pressed',String(autoDive));
+ if(lbl)lbl.textContent=autoDive?'Cruising...':'Cruise';
+ if(drawerBtn)drawerBtn.textContent=autoDive?'⏸ Cruise: On':'▶ Cruise: Off';
+}
+
+function updateSoundUI(){
+ const soundBtn=node('sound-toggle-btn');
+ const drawerBtn=node('drawer-sound-btn');
+ const lbl=node('sound-toggle-label');
+ if(soundBtn)soundBtn.setAttribute('aria-pressed',String(soundEnabled));
+ if(lbl)lbl.textContent=soundEnabled?'Sound On':'Sound';
+ if(drawerBtn)drawerBtn.textContent=soundEnabled?'🔊 Sound: On':'🔈 Sound: Off';
+}
+
+function openMobileDrawer(){
+ const d=node('mobile-drawer');
+ const b=node('mobile-menu-btn');
+ if(d){d.classList.add('open');d.setAttribute('aria-hidden','false');}
+ if(b)b.setAttribute('aria-expanded','true');
+}
+function closeMobileDrawer(){
+ const d=node('mobile-drawer');
+ const b=node('mobile-menu-btn');
+ if(d){d.classList.remove('open');d.setAttribute('aria-hidden','true');}
+ if(b)b.setAttribute('aria-expanded','false');
+}
 
 // Interactive UI wiring for browser environment (safely guarded for headless test sandboxes)
 function bootInteractiveShowcase(){
+ // Mobile Drawer
+ node('mobile-menu-btn')?.addEventListener('click',()=>node('mobile-drawer')?.classList.contains('open')?closeMobileDrawer():openMobileDrawer());
+ node('drawer-close-btn')?.addEventListener('click',closeMobileDrawer);
+ node('drawer-backdrop')?.addEventListener('click',closeMobileDrawer);
+
+ // Arcade Quick Play Button
+ const quickPlay=node('arcade-quick-play-btn');
+ if(quickPlay){
+  quickPlay.addEventListener('click',()=>{
+   autoDive=false;
+   updateCruiseUI();
+   closeMobileDrawer();
+   node('arcade')?.scrollIntoView({behavior:'smooth'});
+   if(arcadeGameInstance&&!arcadeGameInstance.isRunning()){
+    arcadeGameInstance.start();
+   }
+  });
+ }
+
+ // Boot the Playable Arcade Game
+ try{
+  arcadeGameInstance=createArcadeGame('arcade-game-canvas');
+ }catch(_){}
+
  const fsBtn=node('fullscreen-btn');
  if(fsBtn?.addEventListener){
   const fsLabel=node('fullscreen-label');
@@ -405,42 +462,34 @@ function bootInteractiveShowcase(){
   fsBtn.addEventListener('click',toggleFs);
   fsBtn.addEventListener('pointerdown',toggleFs);
  }
+
  const autoBtn=node('auto-dive-btn');
- if(autoBtn?.addEventListener){
-  autoBtn.setAttribute('aria-pressed',String(autoDive));
-  const lbl=node('auto-dive-label');
-  if(lbl)lbl.textContent=autoDive?'Cruising':'Paused';
-  const toggleCruise=(e)=>{
-   e?.preventDefault?.();
-   autoDive=!autoDive;
-   userScrollVelocity=0;
-   autoBtn.setAttribute('aria-pressed',String(autoDive));
-   const lbl=node('auto-dive-label');
-   if(lbl)lbl.textContent=autoDive?'Cruising':'Paused';
-   if(autoDive)request();
-  };
-  autoBtn.addEventListener('click',toggleCruise);
-  autoBtn.addEventListener('pointerdown',toggleCruise);
- }
+ const drawerCruise=node('drawer-cruise-btn');
+ const toggleCruise=(e)=>{
+  e?.preventDefault?.();
+  autoDive=!autoDive;
+  updateCruiseUI();
+  if(autoDive)request();
+ };
+ autoBtn?.addEventListener('click',toggleCruise);
+ drawerCruise?.addEventListener('click',toggleCruise);
+
  const soundBtn=node('sound-toggle-btn');
- if(soundBtn?.addEventListener){
-  const toggleSound=(e)=>{
-   e?.preventDefault?.();
-   soundEnabled=!soundEnabled;
-   soundBtn.setAttribute('aria-pressed',String(soundEnabled));
-   const lbl=node('sound-toggle-label');
-   if(lbl)lbl.textContent=soundEnabled?'Sound On':'Sound';
-   if(soundEnabled){
-    try{
-     if(!audioCtx){const Ctx=window.AudioContext||window.webkitAudioContext;if(Ctx)audioCtx=new Ctx();}
-     if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume();
-    }catch(_){}
-    playSynthSfx('ping');
-   }
-  };
-  soundBtn.addEventListener('click',toggleSound);
-  soundBtn.addEventListener('pointerdown',toggleSound);
- }
+ const drawerSound=node('drawer-sound-btn');
+ const toggleSound=(e)=>{
+  e?.preventDefault?.();
+  soundEnabled=!soundEnabled;
+  updateSoundUI();
+  if(soundEnabled){
+   try{
+    if(!audioCtx){const Ctx=window.AudioContext||window.webkitAudioContext;if(Ctx)audioCtx=new Ctx();}
+    if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume();
+   }catch(_){}
+   playSynthSfx('ping');
+  }
+ };
+ soundBtn?.addEventListener('click',toggleSound);
+ drawerSound?.addEventListener('click',toggleSound);
  // 3D Holographic Card Pointer Tilt & Card Picker
  addEventListener('pointermove',e=>{
   if(reduced||!innerWidth||!innerHeight)return;

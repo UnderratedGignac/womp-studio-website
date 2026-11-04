@@ -65,30 +65,87 @@
   </div>
 </div>
 
-<header>
-  <a class="wordmark" href="#surface" aria-label="Womp Studio home">
-    <span class="wordmark-row">womp<i class="wordmark-dot" aria-hidden="true"></i></span>
-  </a>
-  <nav aria-label="Main navigation">
-    <a href="#surface">Expedition</a>
-    <a href="#bestiary">Bestiary</a>
-    <a href="#gallery">Gameplay</a>
-    <a href="../studio.html">Studio</a>
-    <button type="button" class="hud-btn" id="fullscreen-btn" title="Toggle full screen mode">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-      <span id="fullscreen-label">Fullscreen</span>
+<header id="site-header">
+  <div class="header-left">
+    <a class="wordmark" href="#surface" aria-label="Womp Studio home">
+      <span class="wordmark-row">womp<i class="wordmark-dot" aria-hidden="true"></i></span>
+    </a>
+  </div>
+
+  <nav class="desktop-nav" aria-label="Main navigation">
+    <a href="#surface" class="nav-link">Expedition</a>
+    <a href="#arcade" class="nav-link nav-btn-arcade">🎮 Play Game</a>
+    <a href="#bestiary" class="nav-link">Bestiary</a>
+    <a href="#gallery" class="nav-link">Gameplay</a>
+    <a href="../studio.html" class="nav-link">The Studio</a>
+  </nav>
+
+  <div class="header-actions">
+    <button type="button" class="hud-btn hud-btn-arcade" id="arcade-quick-play-btn" title="Jump straight into the playable game">
+      <span>🎮 Play</span>
     </button>
-    <button type="button" class="hud-btn" id="auto-dive-btn" aria-pressed="true" title="Toggle automatic dive cruise">
+    <button type="button" class="hud-btn" id="auto-dive-btn" aria-pressed="false" title="Toggle automatic dive cruise">
       <span class="hud-btn-dot" aria-hidden="true"></span>
-      <span id="auto-dive-label">Cruising</span>
+      <span id="auto-dive-label">Cruise</span>
     </button>
     <button type="button" class="hud-btn" id="sound-toggle-btn" aria-pressed="false" title="Toggle synthesized underwater sound FX">
       <span class="hud-btn-dot" aria-hidden="true"></span>
       <span id="sound-toggle-label">Sound</span>
     </button>
+    <button type="button" class="hud-btn hud-btn-icon-only" id="fullscreen-btn" title="Toggle full screen mode">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <span id="fullscreen-label" class="sr-only">Fullscreen</span>
+    </button>
     <a class="contact" href="#contact">Contact <span>↗</span></a>
-  </nav>
+
+    <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </button>
+  </div>
 </header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <span class="wordmark-row">womp<i class="wordmark-dot" aria-hidden="true"></i></span>
+      <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="#surface" class="drawer-item">
+        <span class="drawer-icon">🌊</span>
+        <div><strong>Underwater Expedition</strong><small>Surface to abyss journey</small></div>
+      </a>
+      <a href="#arcade" class="drawer-item drawer-item-arcade">
+        <span class="drawer-icon">🎮</span>
+        <div><strong>Playable Arcade Game</strong><small>Live combat with 5 weapons &amp; boss</small></div>
+      </a>
+      <a href="#bestiary" class="drawer-item">
+        <span class="drawer-icon">🐠</span>
+        <div><strong>Reef Bestiary &amp; Sanctuary</strong><small>Interactive coral tank and bestiary</small></div>
+      </a>
+      <a href="#gallery" class="drawer-item">
+        <span class="drawer-icon">📸</span>
+        <div><strong>Gameplay Showcase</strong><small>Screenshots &amp; artwork</small></div>
+      </a>
+      <a href="../studio.html" class="drawer-item">
+        <span class="drawer-icon">🏛️</span>
+        <div><strong>The Studio</strong><small>About Womp Studio</small></div>
+      </a>
+      <a href="#contact" class="drawer-item">
+        <span class="drawer-icon">✉️</span>
+        <div><strong>Contact Us</strong><small>Inquiries &amp; partnerships</small></div>
+      </a>
+    </div>
+    <div class="drawer-footer">
+      <button type="button" class="drawer-btn" id="drawer-cruise-btn">▶ Cruise: Off</button>
+      <button type="button" class="drawer-btn" id="drawer-sound-btn">🔊 Sound: Off</button>
+    </div>
+  </div>
+</div>
 
 <aside class="depth" aria-label="Expedition controls">
   <span class="depth-kicker">Dive control</span>
@@ -143,6 +200,102 @@
     </div>
   </div>
   <span class="section-no">00 / Surface Horizon — An ocean of unlikely heroes</span>
+</section>
+
+<!-- PLAYABLE UNDERWATER ARCADE COMBAT ARENA -->
+<section class="arcade-section" id="arcade">
+  <div class="arcade-header">
+    <div class="arcade-title-wrap">
+      <span class="arcade-badge">✦ Playable Web Build</span>
+      <h2>Pleco Rampage: <em>Arcade Arena</em></h2>
+      <p>Take direct command of the Pleco fighter. Swim, aim, dodge hostile raiders, and test all 5 canonical sea weapons in live underwater combat.</p>
+    </div>
+    <div class="arcade-quick-controls">
+      <span class="control-tip"><strong>PC:</strong> WASD / Arrow keys to swim · Mouse to aim · Click / Space to fire · 1-5 to swap weapon</span>
+      <span class="control-tip"><strong>Mobile:</strong> Use the on-screen touch joystick and FIRE button</span>
+    </div>
+  </div>
+
+  <div class="arcade-viewport-wrapper">
+    <!-- Active HUD -->
+    <div class="arcade-hud">
+      <div class="arcade-hud-left">
+        <div class="arcade-hp-wrap">
+          <span class="hud-label">HULL HP</span>
+          <div class="arcade-hp-bar"><div class="arcade-hp-fill" id="arcade-hp-fill" style="width: 100%;"></div></div>
+          <span class="arcade-hp-text" id="arcade-hp-text">100 / 100</span>
+        </div>
+      </div>
+      <div class="arcade-hud-center" id="arcade-boss-wrap" style="display: none;">
+        <span class="hud-label boss-label">⚠ ABYSSAL BOSS ⚠</span>
+        <div class="arcade-boss-bar"><div class="arcade-boss-fill" id="arcade-boss-fill" style="width: 100%;"></div></div>
+      </div>
+      <div class="arcade-hud-right">
+        <div class="arcade-stat-box">
+          <span class="hud-label">SCORE</span>
+          <strong class="hud-value" id="arcade-score">0</strong>
+        </div>
+        <div class="arcade-stat-box">
+          <span class="hud-label">KILLS</span>
+          <strong class="hud-value" id="arcade-kills">0</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arcade Canvas -->
+    <canvas id="arcade-game-canvas" width="960" height="540" aria-label="Playable Pleco Rampage combat game"></canvas>
+
+    <!-- Weapon Switcher Toolbar -->
+    <div class="arcade-weapon-bar" id="arcade-weapon-bar">
+      <button type="button" class="arcade-wep-btn active" data-wep-idx="0">
+        <span class="wep-key">1</span>
+        <span class="wep-name">Snapper</span>
+      </button>
+      <button type="button" class="arcade-wep-btn" data-wep-idx="1">
+        <span class="wep-key">2</span>
+        <span class="wep-name">Kraken</span>
+      </button>
+      <button type="button" class="arcade-wep-btn" data-wep-idx="2">
+        <span class="wep-key">3</span>
+        <span class="wep-name">Minigun</span>
+      </button>
+      <button type="button" class="arcade-wep-btn" data-wep-idx="3">
+        <span class="wep-key">4</span>
+        <span class="wep-name">Narwhal</span>
+      </button>
+      <button type="button" class="arcade-wep-btn" data-wep-idx="4">
+        <span class="wep-key">5</span>
+        <span class="wep-name">Clam</span>
+      </button>
+    </div>
+
+    <!-- Mobile Virtual Controls -->
+    <div class="arcade-mobile-controls" id="arcade-mobile-controls">
+      <div class="virtual-stick-zone" id="virtual-stick-zone">
+        <div class="virtual-stick-base">
+          <div class="virtual-stick-knob" id="virtual-stick-knob"></div>
+        </div>
+        <span class="stick-label">SWIM</span>
+      </div>
+      <div class="virtual-action-zone">
+        <button type="button" class="virtual-btn virtual-swap-btn" id="virtual-swap-btn">SWAP</button>
+        <button type="button" class="virtual-btn virtual-fire-btn" id="virtual-fire-btn">FIRE</button>
+      </div>
+    </div>
+
+    <!-- Start / Pause / Game Over Overlay -->
+    <div class="arcade-overlay" id="arcade-overlay">
+      <div class="arcade-modal" id="arcade-modal">
+        <h3 id="arcade-modal-title">Pleco Rampage: Arena</h3>
+        <p id="arcade-modal-desc">Survive incoming hostile raiders, collect glowing pearls, and defeat the abyssal titan!</p>
+        <div class="arcade-modal-stats" id="arcade-modal-stats" style="display: none;">
+          <div><small>FINAL SCORE</small><strong id="final-score">0</strong></div>
+          <div><small>TOTAL KILLS</small><strong id="final-kills">0</strong></div>
+        </div>
+        <button type="button" class="arcade-start-btn" id="arcade-start-btn">▶ Start Mission</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="chapter" data-chapter="coral" id="coral">
