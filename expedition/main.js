@@ -25,16 +25,7 @@ const guns=['Snapper Pistol','Kraken Shotgun','Reef Minigun','Narwhal Rail','Cla
 const squadSkins=['cleaner','golden_pleco'];
 let sky=null,width=innerWidth,height=innerHeight,dpr=1,images=null,raf=0,backgrounds=[],last=0,chapterBounds=[];
 let cardFoilX=0,cardFoilY=0,autoDive=true,soundEnabled=false,audioCtx=null,lastSoundShotTime=-1;
-let userInteractTimer=0,userInteracting=false,diveLoopTimer=0;
-function pauseAutoDive(){
- if(!autoDive)return;
- userInteracting=true;
- clearTimeout(userInteractTimer);
- userInteractTimer=setTimeout(()=>{
-  userInteracting=false;
-  if(autoDive)request();
- },3000);
-}
+let diveLoopTimer=0,userScrollVelocity=0,touchStartY=0;
 
 const dots=Array.from({length:42},(_,i)=>({
  x:((i*73+19)%101)/101,
@@ -208,16 +199,18 @@ function heroRing(age,index){return Math.max(.05,age*1.4-index*.14);}
 function scrollProgress(){if(chapterBounds.length!==6)return scrollY/Math.max(1,document.documentElement.scrollHeight-height);let index=0;for(let i=1;i<6;i++)if(scrollY>=chapterBounds[i].top)index=i;const start=chapterBounds[index].top,end=index<5?chapterBounds[index+1].top:start+chapterBounds[index].height;return Math.min(1,(index+Math.max(0,Math.min(1,(scrollY-start)/Math.max(1,end-start))))/6);}
 
 function frame(t){raf=0;if(document.hidden)return;
- if(autoDive&&!userInteracting&&!reduced&&chapterBounds.length===6){
+ if(autoDive&&!reduced&&chapterBounds.length===6){
+  userScrollVelocity*=0.92;
+  const currentSpeed=Math.max(0.8,Math.min(3.2,1.85+userScrollVelocity));
   const docHeight=(document.documentElement?.scrollHeight||document.body?.scrollHeight||0);
   const maxScroll=Math.max(chapterBounds[5].top+chapterBounds[5].height,docHeight-height-20);
-  if(scrollY<maxScroll){window.scrollBy?.(0,1.0);}
+  if(scrollY<maxScroll){window.scrollBy?.(0,currentSpeed);}
   else{
    if(!diveLoopTimer){
     diveLoopTimer=setTimeout(()=>{
      window.scrollTo?.({top:0,behavior:'smooth'});
      diveLoopTimer=0;
-    },3000);
+    },2500);
    }
   }
  }
@@ -336,10 +329,36 @@ function frame(t){raf=0;if(document.hidden)return;
 function request(){if(!raf)raf=requestAnimationFrame(frame);}
 function direction(value){document.body.dataset.scrollDirection=value;const readout=node('scroll-direction');if(readout)readout.textContent=value==='rewind'?'Rewinding':value==='advance'?'Advancing':'Paused';}
 addEventListener('scroll',()=>{const delta=scrollY-previousScroll;previousScroll=scrollY;direction(delta<0?'rewind':'advance');clearTimeout(pauseTimer);pauseTimer=setTimeout(()=>{pauseTimer=0;directInput=false;if(scrollDriver.settled)direction('paused');},160);request();},{passive:true});
-const scrubber=node('combat-scrubber');if(scrubber)scrubber.addEventListener('input',()=>{immediateSeek=true;directInput=true;pauseAutoDive();const phase=Math.min(5.999999,Number(scrubber.value)/1000*6),index=Math.floor(phase),local=phase-index;const bounds=chapterBounds[index];if(bounds)window.scrollTo({top:bounds.top+local*bounds.height,behavior:'instant'});request();});
-addEventListener('keydown',event=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)){directInput=true;pauseAutoDive();}});
-addEventListener('wheel',()=>{directInput=false;pauseAutoDive();},{passive:true});
-addEventListener('touchstart',()=>{directInput=false;pauseAutoDive();},{passive:true});
+const scrubber=node('combat-scrubber');if(scrubber)scrubber.addEventListener('input',()=>{immediateSeek=true;directInput=true;const phase=Math.min(5.999999,Number(scrubber.value)/1000*6),index=Math.floor(phase),local=phase-index;const bounds=chapterBounds[index];if(bounds)window.scrollTo({top:bounds.top+local*bounds.height,behavior:'instant'});request();});
+addEventListener('keydown',event=>{
+ if(['ArrowDown','PageDown',' '].includes(event.key)){
+  event.preventDefault?.();
+  userScrollVelocity=Math.min(1.4,userScrollVelocity+0.8);
+  request();
+ }else if(['ArrowUp','PageUp'].includes(event.key)){
+  event.preventDefault?.();
+  userScrollVelocity=Math.max(-0.9,userScrollVelocity-0.8);
+  request();
+ }
+});
+addEventListener('wheel',event=>{
+ event.preventDefault?.();
+ const delta=Math.sign(event.deltaY)*Math.min(Math.abs(event.deltaY)*0.035,1.4);
+ userScrollVelocity=Math.max(-0.9,Math.min(1.4,userScrollVelocity+delta));
+ request();
+},{passive:false});
+addEventListener('touchstart',event=>{
+ if(event.touches&&event.touches.length>0)touchStartY=event.touches[0].clientY;
+},{passive:true});
+addEventListener('touchmove',event=>{
+ if(event.touches&&event.touches.length>0){
+  const dy=touchStartY-event.touches[0].clientY;
+  touchStartY=event.touches[0].clientY;
+  const delta=Math.sign(dy)*Math.min(Math.abs(dy)*0.04,1.4);
+  userScrollVelocity=Math.max(-0.9,Math.min(1.4,userScrollVelocity+delta));
+  request();
+ }
+},{passive:true});
 document.addEventListener('click',event=>{if(event.target?.closest?.('a[href^="#"]'))directInput=true;});
 addEventListener('resize',resize,{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else request();});
 
@@ -347,16 +366,12 @@ addEventListener('resize',resize,{passive:true});document.addEventListener('visi
 function bootInteractiveShowcase(){
  const autoBtn=node('auto-dive-btn');
  if(autoBtn?.addEventListener){
-  autoBtn.setAttribute('aria-pressed',String(autoDive));
+  autoBtn.setAttribute('aria-pressed','true');
   const lbl=node('auto-dive-label');
-  if(lbl)lbl.textContent=autoDive?'Cruising...':'Auto-Dive';
+  if(lbl)lbl.textContent='Cruising';
   autoBtn.addEventListener('click',()=>{
-   autoDive=!autoDive;
-   userInteracting=false;
-   autoBtn.setAttribute('aria-pressed',String(autoDive));
-   const lbl=node('auto-dive-label');
-   if(lbl)lbl.textContent=autoDive?'Cruising...':'Auto-Dive';
-   if(autoDive)request();
+   userScrollVelocity=1.4;
+   request();
   });
  }
  const soundBtn=node('sound-toggle-btn');
