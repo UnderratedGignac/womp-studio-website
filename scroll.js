@@ -196,7 +196,7 @@
       });
       function stepStudioScroll() {
         studioVelocity *= 0.92;
-        var totalSpeed = Math.max(0.8, Math.min(3.0, 1.6 + studioVelocity));
+        var totalSpeed = Math.max(1.6, Math.min(4.8, 2.8 + studioVelocity));
         var max = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight - 10;
         if (window.scrollY < max) {
           window.scrollBy(0, totalSpeed);

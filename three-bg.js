@@ -713,14 +713,14 @@
       scene.add(spr2); blooms.push(spr2); // pulse with the bloom loop
     }
 
-    // School of fish swimming in V-formation across the scene.
-    var offsets = [[0, 0], [-0.55, -0.3], [-0.55, 0.3], [-1.1, -0.55], [-1.1, 0.55]];
-    for (var fs = 0; fs < offsets.length; fs++) {
-      var fm = makeFish();
-      fm.scale.setScalar(fs ? 0.45 : 0.6);
-      fm.userData = { off: offsets[fs], lead: fs === 0 };
-      scene.add(fm); fishSchool.push(fm);
-    }
+    // School of fish swimming in V-formation across the scene (removed as requested)
+    // var offsets = [[0, 0], [-0.55, -0.3], [-0.55, 0.3], [-1.1, -0.55], [-1.1, 0.55]];
+    // for (var fs = 0; fs < offsets.length; fs++) {
+    //   var fm = makeFish();
+    //   fm.scale.setScalar(fs ? 0.45 : 0.6);
+    //   fm.userData = { off: offsets[fs], lead: fs === 0 };
+    //   scene.add(fm); fishSchool.push(fm);
+    // }
 
     // Rising 3D bubble streams from the lower corners.
     for (var sb = 0; sb < 12; sb++) {

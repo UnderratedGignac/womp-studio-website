@@ -201,7 +201,7 @@ function scrollProgress(){if(chapterBounds.length!==6)return scrollY/Math.max(1,
 function frame(t){raf=0;if(document.hidden)return;
  if(autoDive&&!reduced&&chapterBounds.length===6){
   userScrollVelocity*=0.92;
-  const currentSpeed=Math.max(0.8,Math.min(3.2,1.85+userScrollVelocity));
+  const currentSpeed=Math.max(1.8,Math.min(5.5,3.2+userScrollVelocity));
   const docHeight=(document.documentElement?.scrollHeight||document.body?.scrollHeight||0);
   const maxScroll=Math.max(chapterBounds[5].top+chapterBounds[5].height,docHeight-height-20);
   if(scrollY<maxScroll){window.scrollBy?.(0,currentSpeed);}
@@ -210,7 +210,7 @@ function frame(t){raf=0;if(document.hidden)return;
     diveLoopTimer=setTimeout(()=>{
      window.scrollTo?.({top:0,behavior:'smooth'});
      diveLoopTimer=0;
-    },2500);
+    },2000);
    }
   }
  }
@@ -246,9 +246,7 @@ function frame(t){raf=0;if(document.hidden)return;
   }});
   combat.seek(s.combatTime,s.weapon);
   if(s.gunfire&&combat.flash>.07&&Math.abs(s.combatTime-lastSoundShotTime)>.12){lastSoundShotTime=s.combatTime;playSynthSfx('shot',s.weapon);}
-  // Small authentic fish schools establish depth behind the combat lane.
-  ctx.save();if(s.chapter===0){ctx.beginPath();ctx.rect(0,Math.max(0,waterLevel(s.local,0)*height),width,height);ctx.clip();}
-  if(images.ambientFish)for(let i=0;i<9;i++){const fish=schoolPose(s.progress*84,i,width,height),descriptor=images.ambientFish[i%images.ambientFish.length];ctx.globalAlpha=.28+(i%3)*.12;stripSprite(descriptor,fish.x,fish.y,fish.width,Math.floor(sceneTime*(descriptor.fps*0.4)+i)%descriptor.frames,0,fish.flip);}ctx.restore();ctx.globalAlpha=1;
+  // Background fish removed as requested
   for(const target of combat.targets){
     if(!s.combatReady)continue;
     if(!target.visible)continue;
@@ -364,6 +362,30 @@ addEventListener('resize',resize,{passive:true});document.addEventListener('visi
 
 // Interactive UI wiring for browser environment (safely guarded for headless test sandboxes)
 function bootInteractiveShowcase(){
+ const fsBtn=node('fullscreen-btn');
+ if(fsBtn?.addEventListener){
+  const fsLabel=node('fullscreen-label');
+  function updateFs(){
+   const isFs=Boolean(document.fullscreenElement||document.webkitFullscreenElement);
+   fsBtn.setAttribute('aria-pressed',String(isFs));
+   if(fsLabel)fsLabel.textContent=isFs?'Exit FS':'Fullscreen';
+  }
+  document.addEventListener('fullscreenchange',updateFs);
+  document.addEventListener('webkitfullscreenchange',updateFs);
+  fsBtn.addEventListener('click',async()=>{
+   try{
+    if(document.fullscreenElement||document.webkitFullscreenElement){
+     if(document.exitFullscreen)await document.exitFullscreen();
+     else if(document.webkitExitFullscreen)await document.webkitExitFullscreen();
+    }else{
+     const el=document.documentElement;
+     if(el.requestFullscreen)await el.requestFullscreen();
+     else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen();
+    }
+   }catch(_){}
+   updateFs();
+  });
+ }
  const autoBtn=node('auto-dive-btn');
  if(autoBtn?.addEventListener){
   autoBtn.setAttribute('aria-pressed','true');
