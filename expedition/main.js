@@ -25,7 +25,7 @@ const guns=['Snapper Pistol','Kraken Shotgun','Reef Minigun','Narwhal Rail','Cla
 const squadSkins=['cleaner','golden_pleco'];
 let sky=null,width=innerWidth,height=innerHeight,dpr=1,images=null,raf=0,backgrounds=[],last=0,chapterBounds=[];
 let cardFoilX=0,cardFoilY=0,autoDive=true,soundEnabled=false,audioCtx=null,lastSoundShotTime=-1;
-let diveLoopTimer=0,userScrollVelocity=0,touchStartY=0;
+let diveLoopTimer=0,userScrollVelocity=0,touchStartY=0,touchActive=false,touchResumeTimer=0;
 
 const dots=Array.from({length:42},(_,i)=>({
  x:((i*73+19)%101)/101,
@@ -199,7 +199,7 @@ function heroRing(age,index){return Math.max(.05,age*1.4-index*.14);}
 function scrollProgress(){if(chapterBounds.length!==6)return scrollY/Math.max(1,document.documentElement.scrollHeight-height);let index=0;for(let i=1;i<6;i++)if(scrollY>=chapterBounds[i].top)index=i;const start=chapterBounds[index].top,end=index<5?chapterBounds[index+1].top:start+chapterBounds[index].height;return Math.min(1,(index+Math.max(0,Math.min(1,(scrollY-start)/Math.max(1,end-start))))/6);}
 
 function frame(t){raf=0;if(document.hidden)return;
- if(autoDive&&!reduced&&chapterBounds.length===6){
+ if(autoDive&&!touchActive&&!reduced&&chapterBounds.length===6){
   userScrollVelocity*=0.92;
   const currentSpeed=Math.max(1.8,Math.min(5.5,3.2+userScrollVelocity));
   const docHeight=(document.documentElement?.scrollHeight||document.body?.scrollHeight||0);
@@ -346,6 +346,8 @@ addEventListener('wheel',event=>{
  request();
 },{passive:false});
 addEventListener('touchstart',event=>{
+ touchActive=true;
+ clearTimeout(touchResumeTimer);
  if(event.touches&&event.touches.length>0)touchStartY=event.touches[0].clientY;
 },{passive:true});
 addEventListener('touchmove',event=>{
@@ -356,6 +358,14 @@ addEventListener('touchmove',event=>{
   userScrollVelocity=Math.max(-0.9,Math.min(1.4,userScrollVelocity+delta));
   request();
  }
+},{passive:true});
+addEventListener('touchend',()=>{
+ touchActive=false;
+ clearTimeout(touchResumeTimer);
+ touchResumeTimer=setTimeout(()=>{if(autoDive)request();},1000);
+},{passive:true});
+addEventListener('touchcancel',()=>{
+ touchActive=false;
 },{passive:true});
 document.addEventListener('click',event=>{if(event.target?.closest?.('a[href^="#"]'))directInput=true;});
 addEventListener('resize',resize,{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else request();});
@@ -372,7 +382,8 @@ function bootInteractiveShowcase(){
   }
   document.addEventListener('fullscreenchange',updateFs);
   document.addEventListener('webkitfullscreenchange',updateFs);
-  fsBtn.addEventListener('click',async()=>{
+  const toggleFs=async(e)=>{
+   e?.preventDefault?.();
    try{
     if(document.fullscreenElement||document.webkitFullscreenElement){
      if(document.exitFullscreen)await document.exitFullscreen();
@@ -381,30 +392,54 @@ function bootInteractiveShowcase(){
      const el=document.documentElement;
      if(el.requestFullscreen)await el.requestFullscreen();
      else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen();
+     else{
+      document.body.classList.toggle('mobile-fullscreen-active');
+      const isMobileFs=document.body.classList.contains('mobile-fullscreen-active');
+      fsBtn.setAttribute('aria-pressed',String(isMobileFs));
+      if(fsLabel)fsLabel.textContent=isMobileFs?'Exit FS':'Fullscreen';
+     }
     }
    }catch(_){}
    updateFs();
-  });
+  };
+  fsBtn.addEventListener('click',toggleFs);
+  fsBtn.addEventListener('pointerdown',toggleFs);
  }
  const autoBtn=node('auto-dive-btn');
  if(autoBtn?.addEventListener){
-  autoBtn.setAttribute('aria-pressed','true');
+  autoBtn.setAttribute('aria-pressed',String(autoDive));
   const lbl=node('auto-dive-label');
-  if(lbl)lbl.textContent='Cruising';
-  autoBtn.addEventListener('click',()=>{
-   userScrollVelocity=1.4;
-   request();
-  });
+  if(lbl)lbl.textContent=autoDive?'Cruising':'Paused';
+  const toggleCruise=(e)=>{
+   e?.preventDefault?.();
+   autoDive=!autoDive;
+   userScrollVelocity=0;
+   autoBtn.setAttribute('aria-pressed',String(autoDive));
+   const lbl=node('auto-dive-label');
+   if(lbl)lbl.textContent=autoDive?'Cruising':'Paused';
+   if(autoDive)request();
+  };
+  autoBtn.addEventListener('click',toggleCruise);
+  autoBtn.addEventListener('pointerdown',toggleCruise);
  }
  const soundBtn=node('sound-toggle-btn');
  if(soundBtn?.addEventListener){
-  soundBtn.addEventListener('click',()=>{
+  const toggleSound=(e)=>{
+   e?.preventDefault?.();
    soundEnabled=!soundEnabled;
    soundBtn.setAttribute('aria-pressed',String(soundEnabled));
    const lbl=node('sound-toggle-label');
-   if(lbl)lbl.textContent=soundEnabled?'FX On':'Sound FX';
-   if(soundEnabled)playSynthSfx('ping');
-  });
+   if(lbl)lbl.textContent=soundEnabled?'Sound On':'Sound';
+   if(soundEnabled){
+    try{
+     if(!audioCtx){const Ctx=window.AudioContext||window.webkitAudioContext;if(Ctx)audioCtx=new Ctx();}
+     if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume();
+    }catch(_){}
+    playSynthSfx('ping');
+   }
+  };
+  soundBtn.addEventListener('click',toggleSound);
+  soundBtn.addEventListener('pointerdown',toggleSound);
  }
  // 3D Holographic Card Pointer Tilt & Card Picker
  addEventListener('pointermove',e=>{
@@ -464,86 +499,47 @@ function bootInteractiveShowcase(){
  if(lightbox?.addEventListener)lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.hidden=true;});
 }
 
-// Interactive Armory & Bestiary Canvases (booted once assets and rig are ready)
+// Interactive Sanctuary & Bestiary Canvases (booted once assets are ready)
 function bootCodexCanvases(){
- const armoryCanvas=node('armory-canvas');
  const sanctuaryCanvas=node('sanctuary-canvas');
  const bestiaryGrid=node('bestiary-grid');
- if(!armoryCanvas?.getContext||!images||!rig)return;
+ if(!sanctuaryCanvas?.getContext)return;
 
- // 1. ARMORY LAB LOOP
- const actx=armoryCanvas.getContext('2d');
- let armorySkin='cleaner',armoryWeaponIdx=0,armoryMode='fire',armoryAim=0;
- const armoryBolts=[];
- let lastBurst=0;
-
- function spawnArmoryVolley(superBurst=false){
-  const wId=weaponIds[armoryWeaponIdx];
-  const w=armoryCanvas.width,h=armoryCanvas.height;
-  const mount=rig.measure({x:w*.34,y:h*.52,width:250,weapon:wId,angle:armoryAim,time:performance.now()/1000,skin:armorySkin,facing:1});
-  const count=superBurst?3:1;
-  for(let c=0;c<count;c++){
-   const bolts=createVolley(wId,{
-    x:mount.muzzleX,y:mount.muzzleY,
-    angle:armoryAim+(c-(count-1)/2)*.12,
-    target:{x:w*.82,y:h*.5,dead:false}
-   });
-   armoryBolts.push(...bolts);
-  }
-  playSynthSfx('shot',armoryWeaponIdx);
- }
-
- function updateArmoryReadout(){
-  const r=node('armory-readout'),st=node('armory-stats-pill');
-  const wId=weaponIds[armoryWeaponIdx],prof=profiles[wId];
-  const niceSkin=armorySkin.replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
-  if(r)r.textContent=niceSkin+' · '+guns[armoryWeaponIdx];
-  if(st&&prof)st.textContent='DMG '+prof.dmgMul+'× · '+prof.fireRate+' RPS · '+prof.pellets+' Pellet'+(prof.pellets>1?'s':'');
- }
-
- const skinBtns=Array.from(document.querySelectorAll('.skin-btn'));
- for(const b of skinBtns){
-  b.addEventListener?.('click',()=>{
-   armorySkin=b.dataset.skin||'cleaner';
-   skinBtns.forEach(x=>x.classList?.toggle('active',x===b));
-   updateArmoryReadout();
-   playSynthSfx('ping');
-  });
- }
- const weaponBtns=Array.from(document.querySelectorAll('.weapon-pick-btn'));
- for(const b of weaponBtns){
-  b.addEventListener?.('click',()=>{
-   armoryWeaponIdx=Number(b.dataset.weaponIdx)||0;
-   weaponBtns.forEach(x=>x.classList?.toggle('active',x===b));
-   if(armoryMode==='swim'){armoryMode='fire';}
-   updateArmoryReadout();
-   spawnArmoryVolley(false);
-  });
- }
- const modeBtns=Array.from(document.querySelectorAll('[data-armory-mode]'));
- for(const b of modeBtns){
-  b.addEventListener?.('click',()=>{
-   armoryMode=b.dataset.armoryMode||'fire';
-   modeBtns.forEach(x=>x.classList?.toggle('active',x===b));
-   if(armoryMode==='bite'||armoryMode==='punch')playSynthSfx('melee');
-  });
- }
- const burstBtn=node('armory-burst-btn');
- burstBtn?.addEventListener?.('click',()=>{armoryMode='fire';spawnArmoryVolley(true);});
- armoryCanvas.addEventListener?.('pointermove',e=>{
-  const rect=armoryCanvas.getBoundingClientRect();
-  const mx=(e.clientX-rect.left)*(armoryCanvas.width/Math.max(1,rect.width));
-  const my=(e.clientY-rect.top)*(armoryCanvas.height/Math.max(1,rect.height));
-  armoryAim=Math.max(-.55,Math.min(.55,Math.atan2(my-armoryCanvas.height*.52,mx-armoryCanvas.width*.34)));
- });
- armoryCanvas.addEventListener?.('click',()=>spawnArmoryVolley(true));
-
- // 2. SANCTUARY TANK & BESTIARY DATA
+ // SANCTUARY TANK & BESTIARY DATA
  const sctx=sanctuaryCanvas?.getContext?.('2d');
  let coralBg=null;
  const sanctuaryFish=[];
  const pellets=[];
  const creatureCanvases=[];
+
+ function dropFeast(cx,cy){
+  for(let i=0;i<6;i++){
+   pellets.push({x:cx+(Math.random()-.5)*90,y:cy+(Math.random()-.5)*30,r:4,age:0});
+  }
+  playSynthSfx('ping');
+ }
+
+ function dropPellet(cx,cy){
+  pellets.push({x:cx,y:cy,r:4,age:0});
+  playSynthSfx('ping');
+ }
+
+ sanctuaryCanvas?.addEventListener?.('pointerdown',e=>{
+  const rect=sanctuaryCanvas.getBoundingClientRect();
+  const scaleX=sanctuaryCanvas.width/Math.max(1,rect.width);
+  const scaleY=sanctuaryCanvas.height/Math.max(1,rect.height);
+  dropFeast((e.clientX-rect.left)*scaleX,(e.clientY-rect.top)*scaleY);
+ });
+
+ const feedBtn=node('drop-food-btn');
+ if(feedBtn){
+  const feedAction=(e)=>{
+   e?.preventDefault?.();
+   dropFeast(sanctuaryCanvas.width*.5,60);
+  };
+  feedBtn.addEventListener('click',feedAction);
+  feedBtn.addEventListener('pointerdown',feedAction);
+ }
 
  // Load ../img/manifest.json + ../img/backdrop-coral-sm.webp for the Sanctuary Tank & Bestiary
  fetch(new URL('../img/manifest.json',import.meta.url)).then(r=>r.ok?r.json():[]).then(async list=>{
@@ -571,7 +567,7 @@ function bootCodexCanvases(){
   if(bestiaryGrid&&bestiaryGrid.appendChild){
    const allCreatures=[...validSanctuary];
    const seenIds=new Set();
-   if(images.encounters){
+   if(images?.encounters){
     for(const enc of images.encounters){
      for(const en of enc.enemies||[]){
       if(!seenIds.has(en.id)&&en.image){
@@ -606,147 +602,83 @@ function bootCodexCanvases(){
 
    const filterTabs=Array.from(document.querySelectorAll('[data-bestiary-filter]'));
    for(const tab of filterTabs){
-    tab.addEventListener?.('click',()=>{
+    const doFilter=(e)=>{
+     e?.preventDefault?.();
      const f=tab.dataset.bestiaryFilter||'all';
      filterTabs.forEach(t=>t.classList?.toggle('active',t===tab));
      creatureCanvases.forEach(item=>{
       item.card.hidden=!(f==='all'||item.cr.kind===f);
      });
-    });
+    };
+    tab.addEventListener('click',doFilter);
+    tab.addEventListener('pointerdown',doFilter);
    }
   }
  }).catch(()=>{});
 
- function dropFeast(cx,cy){
-  for(let i=0;i<6;i++){
-   pellets.push({x:cx+(Math.random()-.5)*90,y:cy+(Math.random()-.5)*30,r:4,age:0});
-  }
-  playSynthSfx('ping');
- }
- sanctuaryCanvas?.addEventListener?.('click',e=>{
-  const rect=sanctuaryCanvas.getBoundingClientRect();
-  const x=(e.clientX-rect.left)*(sanctuaryCanvas.width/Math.max(1,rect.width));
-  const y=(e.clientY-rect.top)*(sanctuaryCanvas.height/Math.max(1,rect.height));
-  dropFeast(x,y);
- });
- node('drop-food-btn')?.addEventListener?.('click',()=>dropFeast(sanctuaryCanvas.width*.5,60));
-
- // Unified 60fps animation loop for visible Codex canvases
+ // Unified 60fps animation loop for Sanctuary & Bestiary
  let prevNow=performance.now();
  function tickCodex(now){
   const dt=Math.min(.05,(now-prevNow)/1000);
   prevNow=now;
   const sec=now/1000;
-  // Only paint when near the bottom / outro section to save GPU during upper dive
-  if(scrollY>height*1.5){
-   // A) Paint Armory Canvas
-   if(actx){
-    const w=armoryCanvas.width,h=armoryCanvas.height;
-    actx.clearRect(0,0,w,h);
-    const g=actx.createLinearGradient(0,0,w,h);
-    g.addColorStop(0,'#082f46');g.addColorStop(1,'#031320');
-    actx.fillStyle=g;actx.fillRect(0,0,w,h);
-    // Subtle target dummy on the right
-    const dummyX=w*.82,dummyY=h*.5+Math.sin(sec*2.2)*18;
-    actx.strokeStyle='rgba(126,245,225,0.28)';actx.lineWidth=2;
-    actx.beginPath();actx.arc(dummyX,dummyY,38,0,Math.PI*2);actx.stroke();
-    actx.beginPath();actx.arc(dummyX,dummyY,20,0,Math.PI*2);actx.stroke();
-    const firstBoss=images.encounters?.[activeChapter>=0?activeChapter:0]?.boss;
-    if(firstBoss?.image){
-     const fw=firstBoss.image.width/(firstBoss.frames||4),bh=110*firstBoss.image.height/fw;
-     actx.save();actx.translate(dummyX,dummyY);actx.scale(-1,1);
-     actx.drawImage(firstBoss.image,(Math.floor(sec*3)%4)*fw,0,fw,firstBoss.image.height,-55,-bh/2,110,bh);
-     actx.restore();
-    }
-    if(armoryMode==='fire'){
-     const wId=weaponIds[armoryWeaponIdx],prof=profiles[wId];
-     const interval=1/Math.max(1,prof?.fireRate||2.5);
-     if(sec-lastBurst>=interval){lastBurst=sec;spawnArmoryVolley(false);}
-    }
-    const meleeKey=images.meleeAnimations?.[armorySkin]?armorySkin:'cleaner';
-    const mSheet=images.meleeAnimations?.[meleeKey]?.[armoryMode];
-    if((armoryMode==='bite'||armoryMode==='punch')&&mSheet?.image){
-     const fIdx=Math.floor(sec*5)%mSheet.frames;
-     const fw=mSheet.image.width/mSheet.frames, dw=250*mSheet.unitScale, dh=dw*mSheet.image.height/fw;
-     actx.save();actx.translate(w*.38,h*.52);
-     actx.drawImage(mSheet.image,fIdx*fw,0,fw,mSheet.image.height,-dw/2,-dh/2,dw,dh);
-     actx.restore();
-    }else{
-     const recoil=Math.max(0,1-(sec-lastBurst)*9);
-     rig.draw(actx,{
-      x:w*.34,y:h*.52+Math.sin(sec*2.4)*8,
-      width:250,weapon:weaponIds[armoryWeaponIdx],
-      armed:armoryMode!=='swim',
-      angle:armoryAim,time:sec*1.4,recoil,skin:armorySkin,facing:1
-     });
-    }
-    for(let i=armoryBolts.length-1;i>=0;i--){
-     const b=armoryBolts[i];
-     if(!stepProjectile(b,dt,{x:dummyX,y:dummyY,dead:false})||b.x>w+40||Math.hypot(b.x-dummyX,b.y-dummyY)<36){
-      armoryBolts.splice(i,1);continue;
-     }
-     drawProjectile(actx,b,sec*10);
-    }
+  // Paint Sanctuary Coral Tank
+  if(sctx&&sanctuaryCanvas){
+   const sw=sanctuaryCanvas.width,sh=sanctuaryCanvas.height;
+   if(coralBg)sctx.drawImage(coralBg,0,0,sw,sh);
+   else{sctx.fillStyle='#073b54';sctx.fillRect(0,0,sw,sh);}
+   // Draw pellets
+   for(let i=pellets.length-1;i>=0;i--){
+    const p=pellets[i];
+    p.y+=28*dt;p.age+=dt;
+    if(p.y>sh-20||p.age>8){pellets.splice(i,1);continue;}
+    sctx.fillStyle='#ffd166';
+    sctx.beginPath();sctx.arc(p.x,p.y,p.r,0,Math.PI*2);sctx.fill();
    }
-
-   // B) Paint Sanctuary Coral Tank
-   if(sctx&&sanctuaryCanvas){
-    const sw=sanctuaryCanvas.width,sh=sanctuaryCanvas.height;
-    if(coralBg)sctx.drawImage(coralBg,0,0,sw,sh);
-    else{sctx.fillStyle='#073b54';sctx.fillRect(0,0,sw,sh);}
-    // Draw pellets
-    for(let i=pellets.length-1;i>=0;i--){
-     const p=pellets[i];
-     p.y+=28*dt;p.age+=dt;
-     if(p.y>sh-20||p.age>8){pellets.splice(i,1);continue;}
-     sctx.fillStyle='#ffd166';
-     sctx.beginPath();sctx.arc(p.x,p.y,p.r,0,Math.PI*2);sctx.fill();
+   // Update & draw fish species
+   for(const f of sanctuaryFish){
+    if(pellets.length){
+     const target=pellets[0];
+     const dx=target.x-f.x,dy=target.y-f.y,dist=Math.hypot(dx,dy);
+     if(dist<22){pellets.shift();}
+     else if(dist<320){
+      f.vx+=(dx/dist)*180*dt;
+      f.vy+=(dy/dist)*180*dt;
+     }
     }
-    // Update & draw 14 fish species
-    for(const f of sanctuaryFish){
-     if(pellets.length){
-      const target=pellets[0];
-      const dx=target.x-f.x,dy=target.y-f.y,dist=Math.hypot(dx,dy);
-      if(dist<22){pellets.shift();}
-      else if(dist<320){
-       f.vx+=(dx/dist)*180*dt;
-       f.vy+=(dy/dist)*180*dt;
-      }
-     }
-     const maxSpd=(f.descriptor.speed||65)*1.15;
-     const curSpd=Math.hypot(f.vx,f.vy);
-     if(curSpd>maxSpd){f.vx=f.vx/curSpd*maxSpd;f.vy=f.vy/curSpd*maxSpd;}
-     f.x+=f.vx*dt;
-     f.y+=f.vy*dt+Math.sin(sec*2+f.phase)*10*dt;
-     if(f.x<45){f.x=45;f.vx=Math.abs(f.vx);}
-     if(f.x>sw-45){f.x=sw-45;f.vx=-Math.abs(f.vx);}
-     if(f.y<45){f.y=45;f.vy=Math.abs(f.vy)*.5;}
-     if(f.y>sh-45){f.y=sh-45;f.vy=-Math.abs(f.vy)*.5;}
-     const im=f.descriptor.image,frames=f.descriptor.frames||3,fw=im.width/frames,fh=im.height;
-     const dw=f.w,dh=dw*fh/fw;
-     const frameIdx=Math.floor(sec*((f.descriptor.fps||5)*0.4)+f.phase)%frames;
-     sctx.save();
-     sctx.translate(f.x,f.y);
-     if(f.vx<0)sctx.scale(-1,1);
-     sctx.drawImage(im,frameIdx*fw,0,fw,fh,-dw/2,-dh/2,dw,dh);
-     sctx.restore();
-     }
-     }
-
-     // C) Paint Bestiary Sprite Cards
-     for(const item of creatureCanvases){
-     if(item.card.hidden||!item.ctx)continue;
-     const cctx=item.ctx,cw=item.canvas.width,ch=item.canvas.height,cr=item.cr,im=cr.image;
-     cctx.clearRect(0,0,cw,ch);
-     const frames=cr.frames||4,fw=im.width/frames,fh=im.height;
-     const scale=Math.min((cw-16)/fw,(ch-12)/fh);
-     const dw=fw*scale,dh=fh*scale;
-     const fIdx=Math.floor(sec*((cr.fps||6)*0.4))%frames;
-    cctx.save();
-    cctx.translate(cw/2,ch/2+Math.sin(sec*2.5)*3);
-    cctx.drawImage(im,fIdx*fw,0,fw,fh,-dw/2,-dh/2,dw,dh);
-    cctx.restore();
+    const maxSpd=(f.descriptor.speed||65)*1.15;
+    const curSpd=Math.hypot(f.vx,f.vy);
+    if(curSpd>maxSpd){f.vx=f.vx/curSpd*maxSpd;f.vy=f.vy/curSpd*maxSpd;}
+    f.x+=f.vx*dt;
+    f.y+=f.vy*dt+Math.sin(sec*2+f.phase)*10*dt;
+    if(f.x<45){f.x=45;f.vx=Math.abs(f.vx);}
+    if(f.x>sw-45){f.x=sw-45;f.vx=-Math.abs(f.vx);}
+    if(f.y<45){f.y=45;f.vy=Math.abs(f.vy)*.5;}
+    if(f.y>sh-45){f.y=sh-45;f.vy=-Math.abs(f.vy)*.5;}
+    const im=f.descriptor.image,frames=f.descriptor.frames||3,fw=im.width/frames,fh=im.height;
+    const dw=f.w,dh=dw*fh/fw;
+    const frameIdx=Math.floor(sec*((f.descriptor.fps||5)*0.4)+f.phase)%frames;
+    sctx.save();
+    sctx.translate(f.x,f.y);
+    if(f.vx<0)sctx.scale(-1,1);
+    sctx.drawImage(im,frameIdx*fw,0,fw,fh,-dw/2,-dh/2,dw,dh);
+    sctx.restore();
    }
+  }
+
+  // Paint Bestiary Sprite Cards
+  for(const item of creatureCanvases){
+   if(item.card.hidden||!item.ctx)continue;
+   const cctx=item.ctx,cw=item.canvas.width,ch=item.canvas.height,cr=item.cr,im=cr.image;
+   cctx.clearRect(0,0,cw,ch);
+   const frames=cr.frames||4,fw=im.width/frames,fh=im.height;
+   const scale=Math.min((cw-16)/fw,(ch-12)/fh);
+   const dw=fw*scale,dh=fh*scale;
+   const fIdx=Math.floor(sec*((cr.fps||6)*0.4))%frames;
+   cctx.save();
+   cctx.translate(cw/2,ch/2+Math.sin(sec*2.5)*3);
+   cctx.drawImage(im,fIdx*fw,0,fw,fh,-dw/2,-dh/2,dw,dh);
+   cctx.restore();
   }
   if(!reduced)requestAnimationFrame(tickCodex);
  }
